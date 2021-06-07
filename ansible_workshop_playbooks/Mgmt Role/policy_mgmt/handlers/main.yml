@@ -1,0 +1,17 @@
+---
+# handlers file for policy_mgmt
+
+- name: Publish Handler
+  cp_mgmt_publish:
+  notify: 
+  - Install Access Policy
+
+- name: Install Access Policy
+  cp_mgmt_install_policy:
+    access: true
+    threat_prevention: false
+    policy_package: external_gw_policy_package
+    targets:
+    - '{{ gw_name }}'
+  when: No_Policy_Install is not defined
+

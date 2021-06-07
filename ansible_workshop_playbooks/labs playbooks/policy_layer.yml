@@ -1,0 +1,17 @@
+---
+- name: Rule base playbook
+  hosts: checkpoint_mgmt
+  connection: httpapi  
+  gather_facts: no
+
+
+  tasks:
+
+    - name: SSet Access Layer for URLF and APPI
+      check_point.mgmt.cp_mgmt_access_layer: 
+        applications_and_url_filtering: true
+        firewall: true
+        name: external_gw_policy_package Network
+        state: present
+        auto_publish_session: yes
+...

@@ -1,0 +1,42 @@
+---
+- name: Health Check on Gateways
+  hosts: check_point_gaia_mgmt
+  gather_facts: false
+  tasks:
+ 
+ 
+    - name: "find hostname"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'hostname'"
+      register: host_name
+      
+    - name: "Create the directory {{target_file_location}} on {{ host_name.stdout }}"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'mkdir {{target_file_location}}'"
+
+    - name: "copy Health Check script to {{ host_name.stdout }}"
+      command: "cprid_util putfile -server {{target_gw_1}} -local_file '{{source_file_location}}{{file_name}}' -remote_file '{{target_file_location}}{{file_name}}' -perms 0755"
+      register: file_copy_results
+
+    - name: "Confirm the file exists on {{ host_name.stdout }}"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'ls -ali {{target_file_location}}'"
+      register: list_files_output
+        
+    - name: "running the healthcheck script on {{ host_name.stdout }}"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'bash {{target_file_location}}{{file_name}}'"
+
+    - name: "move log files to {{target_file_location}} directory"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'mv /var/log/{{ host_name.stdout }}_health-check* {{target_file_location}}'"
+
+    - name: "compress the files on {{ host_name.stdout }}"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'tar -czvf /var/log/{{ host_name.stdout }}_health_check_output.tgz {{target_file_location}}{{ host_name.stdout }}_health-check*'"
+              
+    - name: "copy Health Check script results from {{ host_name.stdout }} to the management"
+      command: "cprid_util getfile -server {{target_gw_1}} -local_file '{{source_file_location}}{{ host_name.stdout }}_health_check_output.tgz' -remote_file '/var/log/{{ host_name.stdout }}_health_check_output.tgz'"
+
+    - name: "add the file timestamp on local directory"
+
+      command: "mv {{source_file_location}}{{ host_name.stdout }}_health_check_output.tgz  {{source_file_location}}{{ host_name.stdout }}_health_check_output_{{date}}.tgz"
+
+    - name: "clean up files on  {{ host_name.stdout }}"
+      command: "cprid_util -server {{target_gw_1}} -verbose rexec -rcmd bash -c 'rm -rf {{target_file_location}}'"   
+      
+      

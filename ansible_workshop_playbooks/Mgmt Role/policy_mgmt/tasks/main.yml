@@ -1,0 +1,13 @@
+---
+# tasks file for policy_mgmt
+
+- include_tasks: tasks/create_policy_package.yml
+
+- include_tasks: tasks/policy_layer.yml
+
+- include_tasks: tasks/network_objects.yml
+
+- include_tasks: tasks/rulebase.yml
+
+...
+

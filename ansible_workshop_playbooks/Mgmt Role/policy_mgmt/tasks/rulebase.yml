@@ -1,0 +1,49 @@
+--- 
+
+- name: DNS rule.
+  check_point.mgmt.cp_mgmt_access_rule:
+    layer: "external_gw_policy_package Network"
+    name: "DNS rule"
+    position: "2"
+    source:
+      - "External_Net"
+    destination:
+      - "External_DNS"  
+    service:
+      - dns
+    action: Accept
+  notify: Publish Handler     
+
+- name: internet rule.
+  check_point.mgmt.cp_mgmt_access_rule:
+    layer: "external_gw_policy_package Network"
+    name: "Internet Access"
+    position: "1"
+    source:
+      - "InternalZone"
+    destination:
+      - "ExternalZone"  
+    service:
+      - http
+      - https
+
+    track:
+      type: "Extended Log"
+    action: Accept
+  notify: Publish Handler     
+
+- name: edit the clean up rule.
+  check_point.mgmt.cp_mgmt_access_rule:
+    layer: "external_gw_policy_package Network"
+    name: "Cleanup rule"
+    position: "3"
+    source:
+      - "Any"
+    service:
+      - Any
+    track:
+      type: "Log"
+    action: Accept
+  notify: Publish Handler 
+...        
+

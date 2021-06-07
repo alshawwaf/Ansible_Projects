@@ -1,0 +1,12 @@
+---
+ - name: use file module
+   hosts: ubuntu
+   vars:
+     file_state: absent
+   tasks:
+
+     - name: create a file
+       file:
+         dest: /tmp/lab2
+         state: '{{file_state}}'
+...

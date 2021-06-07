@@ -1,0 +1,23 @@
+--- 
+- 
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: no
+  name: "Create simple Gateway"
+  tasks: 
+
+    - name: "create simple Gateway"
+      check_point.mgmt.cp_mgmt_simple_gateway: 
+        firewall: true
+        gateway_version: R80.40
+        ip_address: "203.0.113.40"
+        name: External_gateway
+        one_time_password: "vpn123"
+        state: absent
+        auto_publish_session: yes
+      register: gateway_created
+
+    - name: show GW creation results
+      debug: 
+        msg: "{{ gateway_created }}"
+...

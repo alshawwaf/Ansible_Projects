@@ -1,0 +1,20 @@
+---
+- name: prepare for FTW
+  hosts: checkpoint_external_gw
+  gather_facts: no
+
+  tasks:
+
+    - name: configure default shell to bash 
+      raw:  set user admin shell /bin/bash
+      register: shell_change
+    
+    - name: print first task results 
+      debug:
+       msg: '{{ shell_change }}'  
+       
+    - name: reset ssh connection
+      meta: reset_connection
+...
+
+

@@ -1,0 +1,22 @@
+--- 
+- name: Creating a policy package
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: no
+
+  tasks: 
+
+    - name: create a policy package
+      check_point.mgmt.cp_mgmt_package: 
+        name: external_gw_policy_package
+        color: cyan
+        access: true
+        threat_prevention: true
+        state: present
+        auto_publish_session: yes
+      register: policy_package_results
+
+    - name: show policy package results
+      debug: 
+        msg: "{{ policy_package_results }}"
+...

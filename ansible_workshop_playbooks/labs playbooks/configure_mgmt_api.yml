@@ -1,0 +1,22 @@
+---
+- name: Configure the manageemnt API access
+  hosts: checkpoint_mgmt
+  gather_facts: no
+
+  tasks:
+
+    - name: Set API server to listen to any source
+      shell: source /etc/bashrc ; mgmt_cli -r true -d "System Data" set api-settings accepted-api-calls-from "All IP addresses"
+
+    - name: restart the API
+      command: api restart
+
+    - name: Check the API status
+      command: api status 
+      register: api_status
+
+    - name: show API state  
+      debug:
+        msg: '{{ api_status.stdout_lines }}'
+...
+

@@ -1,0 +1,15 @@
+---
+- name: get existing Gateways
+  hosts: checkpoint_mgmt
+  connection: httpapi
+  gather_facts: no
+
+  tasks:
+    - name: get existing Gateway objects
+      check_point.mgmt.cp_mgmt_simple_gateway_facts :
+      register: existing_gateways
+
+    - name: print gateways from the Mgmt
+      debug:
+        msg: '{{ existing_gateways }}'
+...

@@ -1,0 +1,17 @@
+---
+- name:  Create External Network
+  cp_mgmt_network:
+    name: "External_Net"
+    subnet: "203.0.113.0"
+    mask_length: "24"
+    state: present
+    color: blue
+  notify: Publish Handler 
+
+- name:  Create public DNS object
+  cp_mgmt_host:
+    name: "External_DNS"
+    ip_address: 8.8.8.8
+    color: red
+  notify: Publish Handler  
+...        

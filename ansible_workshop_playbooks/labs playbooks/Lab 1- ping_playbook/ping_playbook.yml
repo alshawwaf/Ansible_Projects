@@ -1,0 +1,12 @@
+---
+ - name: ping module playbook
+   hosts: ubuntu
+   tasks:
+    - name: ping ubuntu hosts
+      ping:
+      register: ping_output
+
+    - name: view results from ping       
+      debug:
+       msg: '{{ping_output}}'
+...

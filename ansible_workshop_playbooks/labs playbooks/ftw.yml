@@ -1,0 +1,22 @@
+---
+- name: FTW on External Gateway
+  hosts: checkpoint_external_gw
+  gather_facts: no
+
+  vars:
+    hostname: external_gw
+    sickey: vpn123
+
+  tasks:
+    - name: "Run the First Time Wizard (FTW) to build Security Gateway on {{hostname}}"
+      command: config_system --config-string "hostname={{hostname}}&ftw_sic_key={{sickey}}&timezone='America/New York'&install_security_managment=false&install_mgmt_primary=false&install_security_gw=true&gateway_daip=false&install_ppak=true&gateway_cluster_member=false&download_info=true&ntp_primary_version=4&ntp_primary=us.pool.ntp.org&reboot_if_required=true"
+      async: 900
+      poll: 0
+
+    - name: "Wait until FTW completes, time outs after 15 minutes"
+      wait_for:
+        path: /etc/.wizard_accepted
+        timeout: 900
+        state: present
+        msg: "Timeout to find file /etc/.wizard_accepted"
+...

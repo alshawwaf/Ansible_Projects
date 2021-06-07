@@ -1,0 +1,9 @@
+--- 
+- name: Set Access Layer for URLF and APPC
+  cp_mgmt_access_layer:
+    applications_and_url_filtering: true
+    firewall: true
+    name: "external_gw_policy_package Network"
+    state: present
+  notify: Publish Handler 
+...
