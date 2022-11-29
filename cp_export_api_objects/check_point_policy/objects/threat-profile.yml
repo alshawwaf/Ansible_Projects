@@ -1,0 +1,76 @@
+- name: 'Task for Threat profile: overrides_profile'
+  cp_mgmt_threat_profile:
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+    name: overrides_profile
+    active_protections_performance_impact: low
+    active_protections_severity: Low or above
+    confidence_level_low: Detect
+    confidence_level_medium: Prevent
+    confidence_level_high: Prevent
+    ips: true
+    ips_settings:
+      newly_updated_protections: staging
+      exclude_protection_with_performance_impact: true
+      exclude_protection_with_severity: true
+      exclude_protection_with_severity_mode: high or above
+    malicious_mail_policy_settings:
+      email_action: allow
+      remove_attachments_and_links: true
+      malicious_attachments_text: Malicious email attachment '$filename$' removed
+        by Check Point.
+      failed_to_scan_attachments_text: Email attachment '$filename$' failed to be
+        scanned and removed by Check Point.
+      malicious_links_text: '[Check Point] Malicious link: $neutralized_url$ [Check
+        Point]'
+      add_x_header_to_email: true
+      add_email_subject_prefix: true
+      email_subject_prefix_text: Attachment was found malicious. It is recommended
+        not to open this mail.
+      add_customized_text_to_email_body: true
+      email_body_customized_text: '[Check Point]<BR>The following verdicts were determined
+        by Check Point:<BR>$verdicts$<BR>[Check Point]'
+      send_copy: true
+      send_copy_list:
+        - quarantine@cp.local
+    threat_emulation: true
+    anti_virus: true
+    anti_bot: true
+    overrides:
+      - protection: GoToMyPC
+        protection_uid: 39ad3fb4-c8e2-4736-b121-ff3f56853f3e
+        protection_external_info: []
+        default:
+          track: log
+          capture_packets: false
+        override:
+          action: Prevent
+          track: log
+          capture_packets: true
+        final:
+          action: Prevent
+          track: log
+          capture_packets: true
+      - protection: VNC
+        protection_uid: 663580ab-b655-449f-86d2-5f60ac8abe98
+        protection_external_info: []
+        default:
+          track: log
+          capture_packets: false
+        override:
+          action: Prevent
+          track: log
+          capture_packets: true
+        final:
+          action: Prevent
+          track: log
+          capture_packets: true
+    use_extended_attributes: true
+    use_indicators: true
+    indicator_overrides: []
+    comments: ''
+    color: black
+    tags: []

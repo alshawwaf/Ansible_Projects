@@ -1,0 +1,12 @@
+- name: Task for New Application Site Category 1
+  cp_mgmt_application_site_category:
+    name: New Application Site Category 1
+    description: My Application Site category
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

@@ -1,0 +1,411 @@
+* if the rules contain updatable objects. make sure your smartconsole on the target management has internet connection and that you opened the updatable objects view which will update the database to make sure the object used in the rule exists on the management. 
+
+    * fatal: [203.0.113.100]: FAILED! => {"changed": false, "msg": "Checkpoint device returned error 404 with message {'code': 'generic_err_object_not_found', 'message': 'Requested object [Office365 Services] not found'} Unpublished changes were discarded"}
+
+# TODO find why the object has to be used, publish and then delete before it can be imported
+
+* if you need to import the tasks in ansible in order, use loop to import the taks and don't import them individually.
+
+* the objects ['access-role', 'simple-gateway', 'simple-cluster', 'vpn-community-meshed', 'vpn-community-star'] are exported with limited fields.
+
+* the commands to show the policy layers do not include the option add_default_rule which is needed since we are getting those rules from the source machine
+
+* if the policy layer, the ansible code will try to use the set-access-layer command instead of add. This dies not support  add_default_rule
+
+* trying to update the cleanup rule causes equals crash
+
+--------------------------------------
+2022-10-01 20:25:02,787  INFO org.apache.cxf.interceptor.LoggingInInterceptor.log:277 [qtp-1975362568-96] - Inbound Message
+----------------------------
+ID: 10332
+Address: http://127.0.0.1:60735/web_api/equals
+Encoding: UTF-8
+Http-Method: POST
+Content-Type: application/json
+Headers: {accept-encoding=[identity], connection=[keep-alive], Content-Length=[528], content-type=[application/json], Host=[127.0.0.1:60735], User-Agent=[Ansibl
+e], X-Chkp-Sid=[1b69b661be1559702a1c147a80e46fd9], X-Forwarded-For=[203.0.113.161], X-Forwarded-Host=[203.0.113.31:443], X-Forwarded-Host-Port=[443], X-Forwarde
+d-Server=[10.0.1.31]}
+Payload: {"type": "access-rule", "params": {"layer": "Branch_Office_Policy Network", "name": "Cleanup", "source": ["Any"], "source-negate": false, "destination"
+: ["Any"], "destination-negate": false, "service-negate": false, "track": {"type": "Log", "per-session": false, "per-connection": true, "accounting": false, "en
+able-firewall-session": false, "alert": "none"}, "time": ["Any"], "comments": "", "custom-fields": {"field-1": "", "field-2": "", "field-3": ""}, "enabled": tru
+e, "install-on": ["Policy Targets"], "service": ["Any"]}}
+
+
+
+* ERROR  Corporate-Cluster with type: simple-cluster found while parsing simple-gateway objects
+
+* ERROR  Inappropriate Sites with type: application-site-group found while parsing application-site objects
+
+* content format in ansible is not the same as the api
+
+TASK [task for rule with Position: 1, Name: Administrator Access to Gateways and layer Branch_Office_Policy Network] *****************************************************
+fatal: [203.0.113.31]: FAILED! => {"changed": false, "msg": "Checkpoint device returned error 400 with message {'code': 'generic_err_invalid_parameter', 'message': 'Invalid parameter for [content]. Invalid value'} Unpublished changes were discarded"}
+
+
+Address: http://127.0.0.1:60735/web_api/set-access-rule
+Encoding: UTF-8
+Http-Method: POST
+Content-Type: application/json
+Headers: {accept-encoding=[identity], connection=[keep-alive], Content-Length=[726], content-type=[application/json], Host=[127.0.0.1:60735], User-Agent=[Ansibl
+e], X-Chkp-Sid=[b504cb5ad7b34d17b6ccaf7aef024f9c], X-Forwarded-For=[203.0.113.161], X-Forwarded-Host=[203.0.113.31:443], X-Forwarded-Host-Port=[443], X-Forwarde
+d-Server=[10.0.1.31]}
+Payload: {"layer": "Branch_Office_Policy Network", "name": "Administrator Access to Gateways", "source": ["Admins"], "source-negate": false, "destination": ["Br
+anchOffice"], "destination-negate": false, "service-negate": false, "content-direction": "any", "content-negate": false, "track": {"type": "Log", "per-session":
+ false, "per-connection": true, "accounting": false, "enable-firewall-session": false, "alert": "none"}, "action": "Accept", "time": ["Any"], "comments": "", "c
+ustom-fields": {"field-1": "", "field-2": "", "field-3": ""}, "enabled": true, "install-on": ["Policy Targets"], "service": ["Manage Services"], "content": [{"n
+ame": "Any"}], "action-settings": {"enable-identity-captive-portal": false}, "new-position": 1}
+--------------------------------------
+2022-10-01 19:51:35,274  WARN com.checkpoint.management.web_api_is.utils.helpers.RequestHeadersHelper.getMediaType_aroundBody6:19 [qtp-1975362568-96] - No Accep
+t header received. Falling back to default media type [application/json].
+2022-10-01 19:51:35,274 ERROR com.checkpoint.management.web_api_is.utils.jackson.deserializers.BaseMultiValueForSetDeserializer.deserializeSingleObject_aroundBo
+dy2:68 [qtp-1975362568-96] - Failed to deserialize parameter: [content], value is not from type: [java.lang.String]
+2022-10-01 19:51:35,274 ERROR com.checkpoint.management.web_api_is.exceptions.WebApiGeneralException.log:49 [qtp-1975362568-96] - Error code: [GENERIC_ERR_INVAL
+ID_PARAMETER]
+2022-10-01 19:51:35,274 ERROR com.checkpoint.management.web_api_is.exceptions.WebApiGeneralException.log:50 [qtp-1975362568-96] - Error message: [Invalid parame
+ter for [content]. Invalid value]
+2022-10-01 19:51:35,274 ERROR com.checkpoint.management.web_api_is.utils.WebApiCommandExceptionUtils.getErrorReply:73 [qtp-1975362568-96] - com.checkpoint.manag
+ement.web_api_is.exceptions.WebApiInvalidParameterValueException
+
+
+
+* having a rule with the name "Management" will break the ansible code execusion.
+
+* Unsupported fields in TCP Services
+
+delayed_sync_value, enable_tcp_resource, use_delayed_sync
+
+* Threat Profile:
+-  API shows low or very low while ansible module require low or lower     
+      # choices 'very low', 'low or lower', 'medium or lower', 'high or lower'
+      exclude_protection_with_performance_impact_mode: low or very low
+
+- Unsupported fields
+fatal: [203.0.113.31]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (cp_mgmt_threat_profile) module: extended_attributes_to_activate, extended_attributes_to_deactivate, scan_malicious_links, threat_extraction, zero_phishing. Supported parameters include: comments, threat_emulation, wait_for_task_timeout, indicator_overrides, ips_settings, use_indicators, version, activate_protections_by_extended_attributes, wait_for_task, name, ignore_errors, deactivate_protections_by_extended_attributes, anti_virus, use_extended_attributes, anti_bot, malicious_mail_policy_settings, ignore_warnings, state, color, details_level, active_protections_severity, confidence_level_medium, overrides, tags, active_protections_performance_impact, confidence_level_low, auto_publish_session, confidence_level_high, ips."}
+
+fatal: [203.0.113.31]: FAILED! => {"changed": false, "msg": "Checkpoint device returned error 400 with message {'code': 'generic_err_invalid_parameter', 'message': 'Invalid parameter for [exclude-protection-with-performance-impact-mode]. The invalid value [low or lower] should be replaced by one of the following values: [very low, low or very low, medium or lower, high or lower]'} Unpublished changes were discarded"}
+
+
+
+fatal: [203.0.113.31]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (cp_mgmt_service_tcp) module: delayed_sync_value, enable_tcp_resource, use_delayed_sync. Supported parameters include: ignore_warnings, wait_for_task_timeout, groups, use_default_session_timeout, port, sync_connections_on_cluster, comments, aggressive_aging, state, auto_publish_session, wait_for_task, name, session_timeout, source_port, ignore_errors, match_for_any, color, keep_connections_open_after_policy_installation, match_by_protocol_signature, override_default_settings, details_level, tags, version, protocol."}
+
+* Unsupported fields in cp_mgmt_application_site
+
+primary_category_id
+
+fatal: [203.0.113.31]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (cp_mgmt_application_site) module: primary_category_id. Supported parameters include: ignore_errors, additional_categories, description, primary_category, url_list, groups, comments, wait_for_task_timeout, wait_for_task, state, color, tags, urls_defined_as_regular_expression, details_level, version, auto_publish_session, name, ignore_warnings, application_signature."}
+
+
+* api show remote-access-client and ansible expects remote-access-clients plural
+show access-role name "Admins" details-level full -f json
+
+{
+  "uid" : "44c5ff2f-14c6-4aef-90b7-89a4b77a40b1",
+  "name" : "Admins",
+  "type" : "access-role",
+  "domain" : {
+    "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+    "name" : "SMC User",
+    "domain-type" : "domain"
+  },
+  "networks" : [ {
+    "uid" : "4fe3f724-2214-4a2b-b07a-f1b1ad5fcd93",
+    "name" : "Branch Office LAN",
+    "type" : "network",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "broadcast" : "allow",
+    "subnet4" : "145.80.110.0",
+    "mask-length4" : 24,
+    "subnet-mask" : "255.255.255.0",
+    "nat-settings" : {
+      "auto-rule" : false
+    },
+    "groups" : [ ],
+    "comments" : "",
+    "color" : "black",
+    "icon" : "NetworkObjects/network",
+    "tags" : [ ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1654017841238,
+        "iso-8601" : "2022-05-31T17:24+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1654017841238,
+        "iso-8601" : "2022-05-31T17:24+0000"
+      },
+      "creator" : "admin"
+    },
+    "read-only" : false,
+    "available-actions" : {
+      "edit" : "true",
+      "delete" : "true",
+      "clone" : "true"
+    }
+  }, {
+    "uid" : "70b86f6d-3eab-41c3-8a46-a10153b40560",
+    "name" : "Corporate LANs",
+    "type" : "group",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "members" : [ "e562cdd5-dbc0-4da6-b470-5f8740cddfdb", "670a7a54-9bfe-48cc-b6aa-0f137a7671c0", "9fcdbc78-f888-45bf-b887-7764f17ae4ac" ],
+    "groups" : [ ],
+    "comments" : "",
+    "color" : "black",
+    "icon" : "General/group",
+    "tags" : [ ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1654017845514,
+        "iso-8601" : "2022-05-31T17:24+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1654017845514,
+        "iso-8601" : "2022-05-31T17:24+0000"
+      },
+      "creator" : "admin"
+    },
+    "read-only" : false,
+    "available-actions" : {
+      "edit" : "true",
+      "delete" : "true",
+      "clone" : "true"
+    }
+  } ],
+  "users" : [ {
+    "uid" : "abc27904-9518-dc4f-8165-3f07c2258c8b",
+    "name" : "Administrators",
+    "type" : "user-group",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "members" : [ ],
+    "groups" : [ "9fcc50e4-1f8a-4aa0-addc-55b1aaceca88" ],
+    "comments" : "Security Admins",
+    "color" : "black",
+    "icon" : "Objects/UsersGroup",
+    "tags" : [ ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1654017595079,
+        "iso-8601" : "2022-05-31T17:19+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1654017595079,
+        "iso-8601" : "2022-05-31T17:19+0000"
+      },
+      "creator" : "admin"
+    },
+    "read-only" : false,
+    "available-actions" : {
+      "edit" : "true",
+      "delete" : "true",
+      "clone" : "true"
+    }
+  }, {
+    "uid" : "95a41afb-42a2-4346-9afc-226649fbbdab",
+    "name" : "Identity_tag_test",
+    "type" : "identity-tag",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "external-identifier" : "cisco_ISE",
+    "comments" : "",
+    "color" : "black",
+    "icon" : "Tags/ExternalTag",
+    "tags" : [ "9481951b-b1a7-4655-b101-7678ed9a473f" ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1664576923981,
+        "iso-8601" : "2022-09-30T22:28+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1664576923981,
+        "iso-8601" : "2022-09-30T22:28+0000"
+      },
+      "creator" : "admin"
+    },
+    "read-only" : false,
+    "available-actions" : {
+      "edit" : "true",
+      "delete" : "true",
+      "clone" : "true"
+    }
+  }, {
+    "uid" : "5811c786-2476-402d-b965-5005cbdc3d27",
+    "name" : "Unauthenticated Guests",
+    "type" : "CpmiAnyObject",
+    "domain" : {
+      "uid" : "a0bbbc99-adef-4ef8-bb6d-defdefdefdef",
+      "name" : "Check Point Data",
+      "domain-type" : "data domain"
+    },
+    "comments" : "",
+    "color" : "black",
+    "icon" : "General/globalsAny",
+    "tags" : [ ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1653446494231,
+        "iso-8601" : "2022-05-25T02:41+0000"
+      },
+      "last-modifier" : "System",
+      "creation-time" : {
+        "posix" : 1653446494231,
+        "iso-8601" : "2022-05-25T02:41+0000"
+      },
+      "creator" : "System"
+    },
+    "read-only" : true,
+    "available-actions" : {
+      "edit" : "false",
+      "delete" : "false",
+      "clone" : "true"
+    }
+  } ],
+  "machines" : [ {
+    "uid" : "95a41afb-42a2-4346-9afc-226649fbbdab",
+    "name" : "Identity_tag_test",
+    "type" : "identity-tag",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "external-identifier" : "cisco_ISE",
+    "comments" : "",
+    "color" : "black",
+    "icon" : "Tags/ExternalTag",
+    "tags" : [ "9481951b-b1a7-4655-b101-7678ed9a473f" ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1664576923981,
+        "iso-8601" : "2022-09-30T22:28+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1664576923981,
+        "iso-8601" : "2022-09-30T22:28+0000"
+      },
+      "creator" : "admin"
+    },
+    "read-only" : false,
+    "available-actions" : {
+      "edit" : "true",
+      "delete" : "true",
+      "clone" : "true"
+    }
+  } ],
+  "remote-access-client" : {
+    "uid" : "8c272184-ca8d-4397-b56d-6dab5366b0f9",
+    "name" : "allowed_client_test",
+    "type" : "AllowedClients",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "color" : "black",
+    "meta-info" : {
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1664577032653,
+        "iso-8601" : "2022-09-30T22:30+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1664577032653,
+        "iso-8601" : "2022-09-30T22:30+0000"
+      },
+      "creator" : "admin"
+    },
+    "tags" : [ "web" ],
+    "icon" : "General/PermissionRolePrimitive",
+    "comments" : "",
+    "display-name" : "",
+    "customFields" : null
+  },
+  "comments" : "",
+  "color" : "brown",
+  "icon" : "Objects/accessrole",
+  "tags" : [ {
+    "uid" : "9481951b-b1a7-4655-b101-7678ed9a473f",
+    "name" : "web",
+    "type" : "tag",
+    "domain" : {
+      "uid" : "41e821a0-3720-11e3-aa6e-0800200c9fde",
+      "name" : "SMC User",
+      "domain-type" : "domain"
+    },
+    "comments" : "",
+    "color" : "black",
+    "icon" : "Tags/Tag",
+    "tags" : [ ],
+    "meta-info" : {
+      "lock" : "unlocked",
+      "validation-state" : "ok",
+      "last-modify-time" : {
+        "posix" : 1664576783502,
+        "iso-8601" : "2022-09-30T22:26+0000"
+      },
+      "last-modifier" : "admin",
+      "creation-time" : {
+        "posix" : 1664576783502,
+        "iso-8601" : "2022-09-30T22:26+0000"
+      },
+      "creator" : "admin"
+    },
+    "read-only" : false,
+    "available-actions" : {
+      "edit" : "true",
+      "delete" : "true",
+      "clone" : "true"
+    }
+  } ],
+  "meta-info" : {
+    "lock" : "unlocked",
+    "validation-state" : "ok",
+    "last-modify-time" : {
+      "posix" : 1664577037418,
+      "iso-8601" : "2022-09-30T22:30+0000"
+    },
+    "last-modifier" : "admin",
+    "creation-time" : {
+      "posix" : 1654017869845,
+      "iso-8601" : "2022-05-31T17:24+0000"
+    },
+    "creator" : "admin"
+  },
+  "read-only" : false,
+  "available-actions" : {
+    "edit" : "true",
+    "delete" : "true",
+    "clone" : "true"
+  }
+}
