@@ -1,0 +1,2410 @@
+[
+    {
+        "command": "add-access-layer",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "add-default-rule": null,
+            "applications-and-url-filtering": null,
+            "content-awareness": null,
+            "detect-using-x-forward-for": null,
+            "firewall": null,
+            "implicit-cleanup-action": null,
+            "mobile-access": null,
+            "shared": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-access-point-name",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "enforce-end-user-domain": null,
+            "block-traffic-other-end-user-domains": null,
+            "block-traffic-this-end-user-domain": null,
+            "end-user-domain": null,
+            "tags": null,
+            "name": null,
+            "apn": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-access-role",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "machines": null,
+            "networks": null,
+            "remote-access-clients": null,
+            "tags": null,
+            "users": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-access-rule",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "action": null,
+            "action-settings": null,
+            "content": null,
+            "content-direction": null,
+            "content-negate": null,
+            "custom-fields": null,
+            "destination": null,
+            "destination-negate": null,
+            "enabled": null,
+            "inline-layer": null,
+            "install-on": null,
+            "service": null,
+            "service-negate": null,
+            "service-resource": null,
+            "source": null,
+            "source-negate": null,
+            "time": null,
+            "track": null,
+            "user-check": null,
+            "vpn": null,
+            "layer": null,
+            "position": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-access-section",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "layer": null,
+            "position": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-address-range",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "nat-settings": null,
+            "tags": null,
+            "name": null,
+            "ip-address-first": null,
+            "ip-address-last": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-administrator",
+        "description": "Create new administrator.",
+        "type": "add",
+        "fields": {
+            "authentication-method": null,
+            "email": null,
+            "expiration-date": null,
+            "multi-domain-profile": null,
+            "must-change-password": null,
+            "password": null,
+            "password-hash": null,
+            "permissions-profile": null,
+            "phone-number": null,
+            "radius-server": null,
+            "tacacs-server": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-application-site",
+        "description": "Creates new application site, which can be initialized with 'url-list' or 'application-signature' (not both of them).",
+        "type": "add",
+        "fields": {
+            "additional-categories": null,
+            "description": null,
+            "tags": null,
+            "urls-defined-as-regular-expression": null,
+            "name": null,
+            "primary-category": null,
+            "url-list": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-application-site-category",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "description": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-application-site-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "members": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-azure-ad",
+        "description": "Create a new Azure Active Directory object (Azure AD). <br>Azure AD is Microsoft's cloud-based identity and access management service.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "authentication-method": null,
+            "password": null,
+            "username": null,
+            "application-id": null,
+            "application-key": null,
+            "directory-id": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-checkpoint-host",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "interfaces": null,
+            "nat-settings": null,
+            "one-time-password": null,
+            "hardware": null,
+            "os": null,
+            "version": null,
+            "management-blades": null,
+            "logs-settings": null,
+            "save-logs-locally": null,
+            "send-alerts-to-server": null,
+            "send-logs-to-backup-server": null,
+            "send-logs-to-server": null,
+            "tags": null,
+            "name": null,
+            "ip-address": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-data-center-object",
+        "description": "Imports a Data Center Object from a Data Center Server.<br> Data Center Object represents an object in the cloud environment, e.g. a virtual machine, cluster, network and more.<br> Use the show-data-center-content command to see the Data Center Objects that can be imported from a Data Center Server.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "tags": null,
+            "data-center-name": null,
+            "uri": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-data-center-query",
+        "description": "Add new data center query.",
+        "type": "add",
+        "fields": {
+            "data-centers": null,
+            "tags": null,
+            "name": null,
+            "query-rules": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-data-center-server",
+        "description": "Create new Data Center Server.<br> Data Center Server represents the connection to a cloud environment.<br> The Data Center Server contains Data Center Objects, these objects can be imported from it using the add-data-center-object command.<span class=\"show-only-in-doc-ui\"><br><span class=\"show-only-in-doc-ui\"><span style=\"color: red;\">Note:</span> Each Data Center Server type uses additional dedicated arguments, <a data-toggle=\"modal\" href=\"#\" data-target=\"#DataCenterParametersModal\" onclick=\"openDataCenterParametersModal()\" ><u style=\"font-weight: bold;\">see arguments per Data Center Server type</u></a></span><script>function openDataCenterParametersModal(){currentApiVersion = document.getElementsByClassName(\"version-name\")[0].innerText;DataCenterParametersHTMLFile = \"./data/\" + currentApiVersion + \"/static_content/datacenter_arguments.html\";$(\"#data_center_modal\").load(DataCenterParametersHTMLFile);}</script><div class=\"modal fade\" id=\"DataCenterParametersModal\" role=\"dialog\" style=\"overflow-y: auto; z-index: 10000;\"><div class=\"modal-dialog modal-lg\" style=\"margin-top: 150px\" role=\"document\"><div id=\"data_center_modal\" class=\"modal-content\"/></div></div></span>.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "type": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-dns-domain",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "is-sub-domain": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-domain",
+        "description": "Create a new domain in a Multi-Domain-Management environment. In order to allow administrators to connect to this domain using SmartConsole, use add-trusted-client command.<br> Note: This operation is not part of session and will take effect immediately.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "servers": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-dynamic-global-network-object",
+        "description": "Create new object. <br>Local domain must have a corresponding network object (with the same name as the Dynamic Global Network Object) in order for Assignment to succeed.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-dynamic-object",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-exception-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "applied-profile": null,
+            "applied-threat-rules": null,
+            "apply-on": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-gaia-best-practice",
+        "description": "Add a new Gaia Best Practice with a custom script that runs on Gaia Security Gateways. <br/>During the Compliance scan, the practice script runs on the Gaia Security Gateway. To comply with the Best Practice, the script's output should match the expected output parameter.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "action-item": null,
+            "description": null,
+            "expected-output-text": null,
+            "practice-script-path": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-global-assignment",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "dependent-domain": null,
+            "global-access-policy": null,
+            "global-domain": null,
+            "global-threat-prevention-policy": null,
+            "manage-protection-actions": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "members": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-group-with-exclusion",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "except": null,
+            "include": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-gsn-handover-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "enforce-gtp": null,
+            "gtp-rate": null,
+            "members": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-host",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "interfaces": null,
+            "nat-settings": null,
+            "tags": null,
+            "host-servers": null,
+            "name": null,
+            "ip-address": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-https-layer",
+        "description": "Create new HTTPS Inspection layer.",
+        "type": "add",
+        "fields": {
+            "shared": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-https-rule",
+        "description": "Creating new HTTPS Inspection rule.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "destination": null,
+            "service": null,
+            "source": null,
+            "action": null,
+            "blade": null,
+            "certificate": null,
+            "destination-negate": null,
+            "enabled": null,
+            "install-on": null,
+            "service-negate": null,
+            "site-category": null,
+            "site-category-negate": null,
+            "source-negate": null,
+            "track": null,
+            "position": null,
+            "layer": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-https-section",
+        "description": "Create new HTTPS Inspection section.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "layer": null,
+            "position": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-identity-tag",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "external-identifier": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-interface",
+        "description": "Add network interface.",
+        "type": "add",
+        "fields": {
+            "anti-spoofing-enabled": null,
+            "anti-spoofing-settings": null,
+            "cluster-members": null,
+            "cluster-network-type": null,
+            "gateway-owner": null,
+            "gateway-owner-uid": null,
+            "ipv4-address": null,
+            "ipv4-mask-length": null,
+            "ipv4-network-mask": null,
+            "ipv6-address": null,
+            "ipv6-mask-length": null,
+            "ipv6-network-mask": null,
+            "network-interface-type": null,
+            "new-name": null,
+            "security-zone-settings": null,
+            "tags": null,
+            "topology": null,
+            "topology-settings": null,
+            "uid": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "domains-to-process": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-lsm-cluster",
+        "description": "Add LSM Cluster.",
+        "type": "add",
+        "fields": {
+            "interfaces": null,
+            "members": null,
+            "tags": null,
+            "main-ip-address": null,
+            "name-prefix": null,
+            "security-profile": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-lsm-gateway",
+        "description": "Add LSM Gateway.",
+        "type": "add",
+        "fields": {
+            "provisioning-settings": null,
+            "provisioning-state": null,
+            "sic": null,
+            "tags": null,
+            "name": null,
+            "security-profile": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-lsv-profile",
+        "description": "Add a new Large Scale VPN object. When used inside a VPN Community, the object enables communication between a large amount of externally managed VPN peers.",
+        "type": "add",
+        "fields": {
+            "allowed-ip-addresses": null,
+            "restrict-allowed-addresses": null,
+            "tags": null,
+            "vpn-domain": null,
+            "name": null,
+            "certificate-authority": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-mds",
+        "description": "Create new object of type Multi-Domain Server or Multi-Domain Log Server.",
+        "type": "add",
+        "fields": {
+            "hardware": null,
+            "os": null,
+            "version": null,
+            "one-time-password": null,
+            "server-type": null,
+            "ip-pool-first": null,
+            "ip-pool-last": null,
+            "tags": null,
+            "name": null,
+            "ip-address": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-multicast-address-range",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "ip-address": null,
+            "ip-address-first": null,
+            "ip-address-last": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-nat-rule",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "enabled": null,
+            "install-on": null,
+            "method": null,
+            "original-destination": null,
+            "original-service": null,
+            "original-source": null,
+            "translated-destination": null,
+            "translated-service": null,
+            "translated-source": null,
+            "package": null,
+            "position": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-nat-section",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "package": null,
+            "position": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-network",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "nat-settings": null,
+            "tags": null,
+            "broadcast": null,
+            "name": null,
+            "subnet": null,
+            "mask-length": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-opsec-application",
+        "description": "Create a new OPSEC Application. At least one client entity (LEA, CPMI) must be supplied.",
+        "type": "add",
+        "fields": {
+            "cpmi": null,
+            "lea": null,
+            "one-time-password": null,
+            "tags": null,
+            "name": null,
+            "host": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-package",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "access": null,
+            "desktop-security": null,
+            "installation-targets": null,
+            "qos": null,
+            "qos-policy-type": null,
+            "tags": null,
+            "threat-prevention": null,
+            "vpn-traditional-mode": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-scada-application",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "additional-categories": null,
+            "application-signature": null,
+            "description": null,
+            "scada-properties": null,
+            "tags": null,
+            "name": null,
+            "category": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-security-zone",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-citrix-tcp",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "application": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-compound-tcp",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "compound-service": null,
+            "keep-connections-open-after-policy-installation": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-dce-rpc",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "interface-uuid": null,
+            "keep-connections-open-after-policy-installation": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "members": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-gtp",
+        "description": "Create a new GTP service object.",
+        "type": "add",
+        "fields": {
+            "version": null,
+            "access-point-name": null,
+            "allow-usage-of-static-ip": null,
+            "apply-access-policy-on-user-traffic": null,
+            "cs-fallback-and-srvcc": null,
+            "imsi-prefix": null,
+            "interface-profile": null,
+            "ldap-group": null,
+            "ms-isdn": null,
+            "radio-access-technology": null,
+            "restoration-and-recovery": null,
+            "reverse-service": null,
+            "selection-mode": null,
+            "trace-management": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-icmp",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "icmp-code": null,
+            "icmp-type": null,
+            "keep-connections-open-after-policy-installation": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-icmp6",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "icmp-code": null,
+            "icmp-type": null,
+            "keep-connections-open-after-policy-installation": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-other",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "accept-replies": null,
+            "action": null,
+            "aggressive-aging": null,
+            "ip-protocol": null,
+            "keep-connections-open-after-policy-installation": null,
+            "match": null,
+            "match-for-any": null,
+            "override-default-settings": null,
+            "session-timeout": null,
+            "sync-connections-on-cluster": null,
+            "tags": null,
+            "use-default-session-timeout": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-rpc",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "keep-connections-open-after-policy-installation": null,
+            "program-number": null,
+            "tags": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-sctp",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "aggressive-aging": null,
+            "keep-connections-open-after-policy-installation": null,
+            "match-for-any": null,
+            "session-timeout": null,
+            "source-port": null,
+            "sync-connections-on-cluster": null,
+            "tags": null,
+            "use-default-session-timeout": null,
+            "name": null,
+            "port": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-tcp",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "aggressive-aging": null,
+            "keep-connections-open-after-policy-installation": null,
+            "match-by-protocol-signature": null,
+            "match-for-any": null,
+            "override-default-settings": null,
+            "port": null,
+            "protocol": null,
+            "session-timeout": null,
+            "source-port": null,
+            "sync-connections-on-cluster": null,
+            "tags": null,
+            "use-default-session-timeout": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-service-udp",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "accept-replies": null,
+            "aggressive-aging": null,
+            "keep-connections-open-after-policy-installation": null,
+            "match-by-protocol-signature": null,
+            "match-for-any": null,
+            "override-default-settings": null,
+            "port": null,
+            "protocol": null,
+            "session-timeout": null,
+            "source-port": null,
+            "sync-connections-on-cluster": null,
+            "tags": null,
+            "use-default-session-timeout": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-simple-cluster",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "anti-bot": null,
+            "anti-virus": null,
+            "application-control": null,
+            "cluster-mode": null,
+            "content-awareness": null,
+            "data-awareness": null,
+            "firewall": null,
+            "firewall-settings": null,
+            "hardware": null,
+            "interfaces": null,
+            "ips": null,
+            "members": null,
+            "os-name": null,
+            "platform-portal-settings": null,
+            "send-alerts-to-server": null,
+            "send-logs-to-backup-server": null,
+            "send-logs-to-server": null,
+            "tags": null,
+            "threat-emulation": null,
+            "threat-extraction": null,
+            "threat-prevention-mode": null,
+            "url-filtering": null,
+            "usercheck-portal-settings": null,
+            "version": null,
+            "vpn": null,
+            "vpn-settings": null,
+            "name": null,
+            "ip-address": null,
+            "show-portals-certificate": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-simple-gateway",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "anti-bot": null,
+            "anti-virus": null,
+            "application-control": null,
+            "content-awareness": null,
+            "firewall": null,
+            "firewall-settings": null,
+            "icap-server": null,
+            "interfaces": null,
+            "ips": null,
+            "logs-settings": null,
+            "one-time-password": null,
+            "os-name": null,
+            "platform-portal-settings": null,
+            "save-logs-locally": null,
+            "send-alerts-to-server": null,
+            "send-logs-to-backup-server": null,
+            "send-logs-to-server": null,
+            "tags": null,
+            "threat-emulation": null,
+            "threat-extraction": null,
+            "threat-prevention-mode": null,
+            "url-filtering": null,
+            "usercheck-portal-settings": null,
+            "version": null,
+            "vpn": null,
+            "vpn-settings": null,
+            "name": null,
+            "ip-address": null,
+            "show-portals-certificate": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null
+        }
+    },
+    {
+        "command": "add-smart-task",
+        "description": "Create a new Smart Task. <br>This command is available only in a Security Management environment or in Multi-Domain environment when logged into local domain.",
+        "type": "add",
+        "fields": {
+            "custom-data": null,
+            "description": null,
+            "enabled": null,
+            "fail-open": null,
+            "tags": null,
+            "name": null,
+            "action": null,
+            "trigger": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-tacacs-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "members": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-tacacs-server",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "encryption": null,
+            "priority": null,
+            "server-type": null,
+            "service": null,
+            "tags": null,
+            "name": null,
+            "secret-key": null,
+            "server": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-tag",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-threat-exception",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "action": null,
+            "destination": null,
+            "destination-negate": null,
+            "enabled": null,
+            "install-on": null,
+            "protected-scope": null,
+            "protected-scope-negate": null,
+            "protection-or-site": null,
+            "service": null,
+            "service-negate": null,
+            "source": null,
+            "source-negate": null,
+            "track": null,
+            "name": null,
+            "position": null,
+            "exception-group-uid": null,
+            "layer": null,
+            "rule-uid": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-threat-indicator",
+        "description": "Create a new Threat-Indicator.",
+        "type": "add",
+        "fields": {
+            "action": null,
+            "profile-overrides": null,
+            "tags": null,
+            "name": null,
+            "observables": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-threat-ioc-feed",
+        "description": "Create a new threat IOC feed.",
+        "type": "add",
+        "fields": {
+            "action": null,
+            "custom-comment": null,
+            "custom-confidence": null,
+            "custom-header": null,
+            "custom-name": null,
+            "custom-severity": null,
+            "custom-type": null,
+            "custom-value": null,
+            "enabled": null,
+            "feed-url": null,
+            "fields-delimiter": null,
+            "ignore-lines-that-start-with": null,
+            "password": null,
+            "tags": null,
+            "type": null,
+            "use-custom-feed-settings": null,
+            "use-gateway-proxy": null,
+            "username": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-threat-layer",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "add-default-rule": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-threat-profile",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "active-protections-performance-impact": null,
+            "active-protections-severity": null,
+            "confidence-level-high": null,
+            "confidence-level-low": null,
+            "confidence-level-medium": null,
+            "indicator-overrides": null,
+            "ips-settings": null,
+            "malicious-mail-policy-settings": null,
+            "overrides": null,
+            "scan-malicious-links": null,
+            "tags": null,
+            "use-indicators": null,
+            "anti-bot": null,
+            "anti-virus": null,
+            "ips": null,
+            "threat-emulation": null,
+            "threat-extraction": null,
+            "activate-protections-by-extended-attributes": null,
+            "deactivate-protections-by-extended-attributes": null,
+            "use-extended-attributes": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-threat-rule",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "name": null,
+            "action": null,
+            "destination": null,
+            "destination-negate": null,
+            "enabled": null,
+            "install-on": null,
+            "protected-scope": null,
+            "protected-scope-negate": null,
+            "service": null,
+            "service-negate": null,
+            "source": null,
+            "source-negate": null,
+            "track": null,
+            "track-settings": null,
+            "position": null,
+            "layer": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-time",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "end": null,
+            "end-never": null,
+            "hours-ranges": null,
+            "start": null,
+            "start-now": null,
+            "tags": null,
+            "recurrence": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-time-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "members": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-trusted-client",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "domains-assignment": null,
+            "ip-address-first": null,
+            "ip-address-last": null,
+            "mask-length": null,
+            "multi-domain-server-trusted-client": null,
+            "tags": null,
+            "type": null,
+            "wild-card": null,
+            "name": null,
+            "ip-address": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-updatable-object",
+        "description": "Import an updatable object from the repository to the management server. This operation takes effect immediately and doesn't require publishing.",
+        "type": "add",
+        "fields": {
+            "tags": null,
+            "uri": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-user",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "template": null,
+            "email": null,
+            "expiration-date": null,
+            "phone-number": null,
+            "authentication-method": null,
+            "password": null,
+            "radius-server": null,
+            "tacacs-server": null,
+            "connect-on-days": null,
+            "from-hour": null,
+            "to-hour": null,
+            "allowed-locations": null,
+            "encryption": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "groups": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-user-group",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "email": null,
+            "members": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-user-template",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "expiration-by-global-properties": null,
+            "authentication-method": null,
+            "radius-server": null,
+            "tacacs-server": null,
+            "connect-on-days": null,
+            "from-hour": null,
+            "to-hour": null,
+            "allowed-locations": null,
+            "encryption": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "groups": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-vpn-community-meshed",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "encryption-method": null,
+            "encryption-suite": null,
+            "gateways": null,
+            "granular-encryptions": null,
+            "ike-phase-1": null,
+            "ike-phase-2": null,
+            "override-vpn-domains": null,
+            "shared-secrets": null,
+            "tags": null,
+            "tunnel-granularity": null,
+            "use-shared-secret": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-vpn-community-star",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "center-gateways": null,
+            "encryption-method": null,
+            "encryption-suite": null,
+            "granular-encryptions": null,
+            "ike-phase-1": null,
+            "ike-phase-2": null,
+            "mesh-center-gateways": null,
+            "override-vpn-domains": null,
+            "satellite-gateways": null,
+            "shared-secrets": null,
+            "tags": null,
+            "tunnel-granularity": null,
+            "use-shared-secret": null,
+            "name": null,
+            "set-if-exists": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "add-wildcard",
+        "description": "Create new object.",
+        "type": "add",
+        "fields": {
+            "ipv4-address": null,
+            "ipv4-mask-wildcard": null,
+            "ipv6-address": null,
+            "ipv6-mask-wildcard": null,
+            "tags": null,
+            "name": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "groups": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "show-access-layer",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-access-point-name",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-access-role",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-access-rule",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "show-as-ranges": null,
+            "show-hits": null,
+            "hits-settings": null,
+            "uid": null,
+            "layer": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-access-section",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "layer": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-address-range",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-administrator",
+        "description": "Retrieve existing administrator using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-api-settings",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {}
+    },
+    {
+        "command": "show-application-site",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-application-site-category",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-application-site-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-azure-ad",
+        "description": "Retrieve existing Azure AD. <br>Reply will not contain the sensitive properties <i><b>application key</i></b> and <i><b>password</i></b>.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-checkpoint-host",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-data-center-object",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-data-center-query",
+        "description": "Retrieves data center query.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-data-center-server",
+        "description": "Retrieve existing Data Center Server using name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-dns-domain",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-domain",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-dynamic-global-network-object",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-dynamic-object",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-exception-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-gaia-best-practice",
+        "description": "Show a Gaia Best Practice.",
+        "type": "show",
+        "fields": {
+            "best-practice-id": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-global-assignment",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "dependent-domain": null,
+            "global-domain": null,
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-global-domain",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "show-as-ranges": null,
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-group-with-exclusion",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "show-as-ranges": null,
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-gsn-handover-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-host",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-https-layer",
+        "description": "Retrieve existing HTTPS Inspection layer using layer name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-https-rule",
+        "description": "Retrieve existing HTTPS Inspection rule using rule number or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "layer": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-https-section",
+        "description": "Retrieve existing HTTPS Inspection section using section name or uid and layer name.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "layer": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-identity-tag",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-interface",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "anti-spoofing-enabled": null,
+            "anti-spoofing-settings": null,
+            "cluster-members": null,
+            "cluster-network-type": null,
+            "gateway-owner": null,
+            "gateway-owner-uid": null,
+            "ipv4-address": null,
+            "ipv4-mask-length": null,
+            "ipv4-network-mask": null,
+            "ipv6-address": null,
+            "ipv6-mask-length": null,
+            "ipv6-network-mask": null,
+            "network-interface-type": null,
+            "new-name": null,
+            "security-zone-settings": null,
+            "tags": null,
+            "topology": null,
+            "topology-settings": null,
+            "uid": null,
+            "color": null,
+            "comments": null,
+            "details-level": null,
+            "domains-to-process": null,
+            "ignore-warnings": null,
+            "ignore-errors": null
+        }
+    },
+    {
+        "command": "show-ips-protection-extended-attribute",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-ips-update-schedule",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {}
+    },
+    {
+        "command": "show-login-message",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-lsm-cluster",
+        "description": "Show LSM Cluster.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-lsm-gateway",
+        "description": "Show LSM Gateway.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-lsv-profile",
+        "description": "Retrieve existing LSV profile object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-mds",
+        "description": "Retrieve existing object of type Multi-Domain Server or Multi-Domain Log Server using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-multicast-address-range",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-nat-rule",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "package": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-nat-section",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "package": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-network",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-opsec-application",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-package",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-place-holder",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-scada-application",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-security-zone",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-citrix-tcp",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-compound-tcp",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-dce-rpc",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "show-as-ranges": null,
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-gtp",
+        "description": "Retrieve existing GTP service object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-icmp",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-icmp6",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-other",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-rpc",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-sctp",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-tcp",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-service-udp",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-session",
+        "description": "Show session.",
+        "type": "show",
+        "fields": {
+            "uid": null
+        }
+    },
+    {
+        "command": "show-simple-cluster",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "limit-interfaces": null,
+            "uid": null,
+            "show-portals-certificate": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-simple-gateway",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "show-portals-certificate": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-smart-task",
+        "description": "Retrieve existing object using object name or uid. <br>This command is available only in a Security Management environment or in Multi-Domain environment when logged into local domain.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-smart-task-trigger",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-tacacs-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-tacacs-server",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-tag",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-exception",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "exception-group-uid": null,
+            "layer": null,
+            "rule-uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-indicator",
+        "description": "Displays a Threat-Indicator.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-ioc-feed",
+        "description": "Displays a threat IOC feed.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-layer",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-profile",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-protection",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "show-ips-additional-properties": null,
+            "show-profiles": null,
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-threat-rule",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "layer": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-time",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-time-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-trusted-client",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-updatable-object",
+        "description": "Retrieves an existing Updatable Object from the Management server.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-user",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "show-certificates": null,
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-user-group",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-user-template",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-vpn-community-meshed",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-vpn-community-remote-access",
+        "description": "Retrieve existing Remote Access object. Using object name or uid is optional.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-vpn-community-star",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    },
+    {
+        "command": "show-wildcard",
+        "description": "Retrieve existing object using object name or uid.",
+        "type": "show",
+        "fields": {
+            "uid": null,
+            "details-level": null
+        }
+    }
+]

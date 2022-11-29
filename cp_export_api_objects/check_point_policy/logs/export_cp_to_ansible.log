@@ -1,0 +1,10 @@
+utils.logger_main - INFO - Logger created
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): 54.183.186.224:443
+urllib3.connectionpool - DEBUG - https://54.183.186.224:443 "POST /web_api/login HTTP/1.1" 200 None
+utils.logger_main - INFO - Login successful, SID: c30TaKBGxnl8xq782eLTFEe2gM7SKBz1ATUwumhShe4
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): 54.183.186.224:443
+urllib3.connectionpool - DEBUG - https://54.183.186.224:443 "POST /web_api/show-threat-layers HTTP/1.1" 200 None
+urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): 54.183.186.224:443
+urllib3.connectionpool - DEBUG - https://54.183.186.224:443 "POST /web_api/show-threat-profiles HTTP/1.1" 200 None
+utils.logger_main - INFO - Exporting the profile: overrides_profile
+utils.logger_main - INFO - Writing the profile to check_point_policy\objects\threat-profile.yml

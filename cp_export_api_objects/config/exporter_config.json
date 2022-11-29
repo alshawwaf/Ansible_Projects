@@ -1,0 +1,23 @@
+{
+    "api_version": "1.8",
+    "state": "present",
+    "auto_publish_session": false,
+    "ignore_errors": false,
+    "ignore_warnings": false,
+    "wait_for_task": true,
+    "wait_for_task_timeout": "30",
+    "required_folders": [
+        "logs",
+        "objects",
+        "docs"
+    ],
+    "cp_ansible_collection_github_url": "https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection",
+    "output_folder_name": "check_point_policy",
+    "logs_folder_name": "logs",
+    "playbook_file_name": "check_point_policy/cp_mgmt_playbook.yml",
+    "objects_folder_name": "objects",
+    "config_folder_name": "config",
+    "api_json_file_name": "api_commands.json",
+    "ignored_ansible_modules_file_name": "ignored_ansible_modules.json",
+    "supported_ansible_modules_file_name": "supported_ansible_modules.json"
+}

@@ -1,0 +1,13 @@
+- name: Task for New_RPC_Service_1
+  cp_mgmt_service_rpc:
+    name: New_RPC_Service_1
+    program_number: 5669
+    keep_connections_open_after_policy_installation: false
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

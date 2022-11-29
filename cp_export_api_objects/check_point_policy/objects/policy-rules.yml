@@ -1,0 +1,2167 @@
+- name: 'task for rule number: 1, Name: Administrator Access to Gateways'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: Administrator Access to Gateways
+    position: 1
+    source:
+      - Admins
+    source_negate: false
+    destination:
+      - BranchOffice
+    destination_negate: false
+    service:
+      - Manage Services
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 2, Name: DHCP Server for the branch Office'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: DHCP Server for the branch Office
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - BranchOffice
+    destination_negate: false
+    service:
+      - dhcp-request
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Stealth rule'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: Stealth rule
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - BranchOffice
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 4, Name: VPN between Internal LANs and Branch office
+    LAN'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: VPN between Internal LANs and Branch office LAN
+    position: 4
+    source:
+      - Branch Office LAN
+      - Corporate LANs
+    source_negate: false
+    destination:
+      - Branch Office LAN
+      - Corporate LANs
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 5, Name: Branch office should have VPN access to servers
+    (ERP on ftp_21)'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: Branch office should have VPN access to servers (ERP on ftp_21)
+    position: 5
+    source:
+      - Branch Office LAN
+    source_negate: false
+    destination:
+      - ERP Server
+      - FTP_Int
+    destination_negate: false
+    service:
+      - ftp
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 6, Name: Branch office should have VPN access to servers'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: Branch office should have VPN access to servers
+    position: 6
+    source:
+      - Branch Office LAN
+    source_negate: false
+    destination:
+      - DNS Server
+      - Exchange
+    destination_negate: false
+    service:
+      - dns
+      - http
+      - https
+      - smtp
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 7, Name: Access to Internet according to Web control
+    policy (next layer)'
+  cp_mgmt_access_rule:
+    layer: Branch_Office_Policy Network
+    name: Access to Internet according to Web control policy (next layer)
+    position: 7
+    source:
+      - Branch Office LAN
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - Internet Services
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: Allow access to the company''s public web
+    site'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Customer Service Server Layer
+    name: Allow access to the company's public web site
+    position: 1
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - mycompany.com
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: Mobile Access for Internal FS'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Mobile Access for Internal FS
+    position: 1
+    source:
+      - Sales
+    source_negate: false
+    destination:
+      - FTP_Int
+    destination_negate: false
+    service:
+      - ftp
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 2, Name: Only Finance department has access to reports'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Only Finance department has access to reports
+    position: 2
+    source:
+      - Finance User
+    source_negate: false
+    destination:
+      - ERP Server
+    destination_negate: false
+    service:
+      - Report Portal
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Internal DNS Access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Internal DNS Access
+    position: 3
+    source:
+      - DMZZone
+      - InternalZone
+    source_negate: false
+    destination:
+      - DNS Server
+    destination_negate: false
+    service:
+      - dns
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 4, Name: Customer Service Server'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Customer Service Server
+    position: 4
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - Customer Service Portal
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: Guests web access through Portal'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Guest Exception Layer
+    name: Guests web access through Portal
+    position: 1
+    source:
+      - Guests
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Web
+      - Web_Proxy
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: true
+- name: 'task for rule number: 2, Name: Guests outgoing traffic'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Guest Exception Layer
+    name: Guests outgoing traffic
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - ExternalZone
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Internal lab temporary access for board demo
+    (Sunday, Mar 26th 10:00-12:00)'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Guest Exception Layer
+    name: Internal lab temporary access for board demo (Sunday, Mar 26th 10:00-12:00)
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internal Lab srv 05
+    destination_negate: false
+    service:
+      - https
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Temp Access
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: Administrator Access to Gateways'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Administrator Access to Gateways
+    position: 1
+    source:
+      - Admins
+    source_negate: false
+    destination:
+      - Corporate-GW
+    destination_negate: false
+    service:
+      - Manage Services
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 2, Name: Stealth rule'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Stealth rule
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Corporate-GW
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 3, Name: VPN between Internal LANs and Branch office
+    LAN'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: VPN between Internal LANs and Branch office LAN
+    position: 3
+    source:
+      - Branch Office LAN
+      - Corporate LANs
+    source_negate: false
+    destination:
+      - Branch Office LAN
+      - Corporate LANs
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 4, Name: Access to Internet according to Web control
+    policy'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Access to Internet according to Web control policy
+    position: 4
+    source:
+      - InternalZone
+    source_negate: false
+    destination:
+      - ExternalZone
+      - Proxy Server
+    destination_negate: false
+    service:
+      - Web
+      - Web_Proxy
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: Corporate_Policy Web Control Layer
+- name: 'task for rule number: 1, Name: Block abuse / high risk applications'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block abuse / high risk applications
+    position: 1
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Inappropriate Sites
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 2, Name: Block download of executables from untrusted
+    sites'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block download of executables from untrusted sites
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Uncategorized
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Corporate-GW
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 3, Name: Ask user upon possible personal data exposure'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Ask user upon possible personal data exposure
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - http
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Inform
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Corporate-GW
+    action_settings:
+      enable_identity_captive_portal: false
+    user_check:
+      interaction: Access Notification
+      frequency: once a day
+      confirm: per application/site
+- name: 'task for rule number: 4, Name: HR can access to social network applications'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: HR can access to social network applications
+    position: 4
+    source:
+      - HR
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Facebook
+      - LinkedIn
+      - Twitter
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Inform
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+    user_check:
+      interaction: Access Approval
+      frequency: once a day
+      confirm: per application/site
+- name: 'task for rule number: 5, Name: All employees can access YouTube and Vimeo
+    for work purposes'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: All employees can access YouTube and Vimeo for work purposes
+    position: 5
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Vimeo
+      - YouTube
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Ask
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+    user_check:
+      interaction: Company Policy
+      frequency: once a day
+      confirm: per application/site
+- name: 'task for rule number: 6, Name: Block specific URLs'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block specific URLs
+    position: 6
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Blocked URLs
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 7, Name: Block Access to Office Online Services'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block Access to Office Online Services
+    position: 7
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Office365 Services
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 8, Name: Block specific categories for all employees'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block specific categories for all employees
+    position: 8
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Media Streams
+      - P2P File Sharing
+      - Social Networking
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 5, Name: DNS outgoing access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: DNS outgoing access
+    position: 5
+    source:
+      - DNS Server
+    source_negate: false
+    destination:
+      - ExternalZone
+    destination_negate: false
+    service:
+      - domain-tcp
+      - domain-udp
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 6, Name: Public ICAP access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Public ICAP access
+    position: 6
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Remote-5-gw
+    destination_negate: false
+    service:
+      - icap
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 7, Name: Access to company''s web server'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Access to company's web server
+    position: 7
+    source:
+      - ExternalZone
+    source_negate: false
+    destination:
+      - Web Server
+    destination_negate: false
+    service:
+      - https
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: Corporate_Policy Customer Service Server Layer
+- name: 'task for rule number: 1, Name: Allow access to the company''s public web
+    site'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Customer Service Server Layer
+    name: Allow access to the company's public web site
+    position: 1
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - mycompany.com
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 8, Name: Allow corporate LANs to DMZ'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Allow corporate LANs to DMZ
+    position: 8
+    source:
+      - Corporate LANs
+    source_negate: false
+    destination:
+      - DMZZone
+    destination_negate: false
+    service:
+      - ftp
+      - http
+      - https
+      - smtp
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 9, Name: Public FTP Access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Public FTP Access
+    position: 9
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Public FTP Server
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: Corporate_Policy Public FTP Layer
+- name: 'task for rule number: 1, Name: External users limited for upload only'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Public FTP Layer
+    name: External users limited for upload only
+    position: 1
+    source:
+      - ExternalZone
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 2, Name: Allow public FTP access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Public FTP Layer
+    name: Allow public FTP access
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 10, Name: Proxy Web access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Proxy Web access
+    position: 10
+    source:
+      - Proxy Server
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - Web
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 11, Name: External mail traffic'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: External mail traffic
+    position: 11
+    source:
+      - Mail Relay
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - smtp
+      - SMTPS
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 12, Name: RDP Exceptions'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: RDP Exceptions
+    position: 12
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - Remote_Desktop_Protocol
+      - Remote_Desktop_Protocol_UDP
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: Corporate_Policy RDP Exceptions Layer
+- name: 'task for rule number: 1, Name: Alert on remote RDP attempts'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy RDP Exceptions Layer
+    name: Alert on remote RDP attempts
+    position: 1
+    source:
+      - ExternalZone
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: alert
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 2, Name: Allow RDP for Helpdesk'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy RDP Exceptions Layer
+    name: Allow RDP for Helpdesk
+    position: 2
+    source:
+      - IT Helpdesk Users
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Allow RDP for internal lab'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy RDP Exceptions Layer
+    name: Allow RDP for internal lab
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internal Lab Net
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 13, Name: Policy for access to Data Center servers'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Policy for access to Data Center servers
+    position: 13
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Data Center LAN
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: Corporate_Policy Data Center Layer
+- name: 'task for rule number: 1, Name: Mobile Access for Internal FS'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Mobile Access for Internal FS
+    position: 1
+    source:
+      - Sales
+    source_negate: false
+    destination:
+      - FTP_Int
+    destination_negate: false
+    service:
+      - ftp
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 2, Name: Only Finance department has access to reports'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Only Finance department has access to reports
+    position: 2
+    source:
+      - Finance User
+    source_negate: false
+    destination:
+      - ERP Server
+    destination_negate: false
+    service:
+      - Report Portal
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Internal DNS Access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Internal DNS Access
+    position: 3
+    source:
+      - DMZZone
+      - InternalZone
+    source_negate: false
+    destination:
+      - DNS Server
+    destination_negate: false
+    service:
+      - dns
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 4, Name: Customer Service Server'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Data Center Layer
+    name: Customer Service Server
+    position: 4
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - Customer Service Portal
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 14, Name: Wireless Guests access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Network
+    name: Wireless Guests access
+    position: 14
+    source:
+      - Wireless Guests Network
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: Corporate_Policy Guest Exception Layer
+- name: 'task for rule number: 1, Name: Guests web access through Portal'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Guest Exception Layer
+    name: Guests web access through Portal
+    position: 1
+    source:
+      - Guests
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Web
+      - Web_Proxy
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: true
+- name: 'task for rule number: 2, Name: Guests outgoing traffic'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Guest Exception Layer
+    name: Guests outgoing traffic
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - ExternalZone
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Internal lab temporary access for board demo
+    (Sunday, Mar 26th 10:00-12:00)'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Guest Exception Layer
+    name: Internal lab temporary access for board demo (Sunday, Mar 26th 10:00-12:00)
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internal Lab srv 05
+    destination_negate: false
+    service:
+      - https
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Temp Access
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: External users limited for upload only'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Public FTP Layer
+    name: External users limited for upload only
+    position: 1
+    source:
+      - ExternalZone
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 2, Name: Allow public FTP access'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Public FTP Layer
+    name: Allow public FTP access
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Extended Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: Alert on remote RDP attempts'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy RDP Exceptions Layer
+    name: Alert on remote RDP attempts
+    position: 1
+    source:
+      - ExternalZone
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: alert
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 2, Name: Allow RDP for Helpdesk'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy RDP Exceptions Layer
+    name: Allow RDP for Helpdesk
+    position: 2
+    source:
+      - IT Helpdesk Users
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Allow RDP for internal lab'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy RDP Exceptions Layer
+    name: Allow RDP for internal lab
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internal Lab Net
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 1, Name: Block abuse / high risk applications'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block abuse / high risk applications
+    position: 1
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Inappropriate Sites
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 2, Name: Block download of executables from untrusted
+    sites'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block download of executables from untrusted sites
+    position: 2
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Uncategorized
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: true
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Corporate-GW
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 3, Name: Ask user upon possible personal data exposure'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Ask user upon possible personal data exposure
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - http
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Inform
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Corporate-GW
+    action_settings:
+      enable_identity_captive_portal: false
+    user_check:
+      interaction: Access Notification
+      frequency: once a day
+      confirm: per application/site
+- name: 'task for rule number: 4, Name: HR can access to social network applications'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: HR can access to social network applications
+    position: 4
+    source:
+      - HR
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Facebook
+      - LinkedIn
+      - Twitter
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Inform
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+    user_check:
+      interaction: Access Approval
+      frequency: once a day
+      confirm: per application/site
+- name: 'task for rule number: 5, Name: All employees can access YouTube and Vimeo
+    for work purposes'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: All employees can access YouTube and Vimeo for work purposes
+    position: 5
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Vimeo
+      - YouTube
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Ask
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+    user_check:
+      interaction: Company Policy
+      frequency: once a day
+      confirm: per application/site
+- name: 'task for rule number: 6, Name: Block specific URLs'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block specific URLs
+    position: 6
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Blocked URLs
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 7, Name: Block Access to Office Online Services'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block Access to Office Online Services
+    position: 7
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Office365 Services
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    user_check:
+      interaction: Blocked Message - Access Control
+- name: 'task for rule number: 8, Name: Block specific categories for all employees'
+  cp_mgmt_access_rule:
+    layer: Corporate_Policy Web Control Layer
+    name: Block specific categories for all employees
+    position: 8
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Internet
+    destination_negate: false
+    service:
+      - Media Streams
+      - P2P File Sharing
+      - Social Networking
+    service_negate: false
+    track:
+      type: Log
+      per_session: true
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    user_check:
+      interaction: Blocked Message - Access Control

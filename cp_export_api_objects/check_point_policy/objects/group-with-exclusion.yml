@@ -1,0 +1,13 @@
+- name: Task for Group with exclusion
+  cp_mgmt_group_with_exclusion:
+    name: Group with exclusion
+    include: New Group 1
+    except: New Group 2
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
