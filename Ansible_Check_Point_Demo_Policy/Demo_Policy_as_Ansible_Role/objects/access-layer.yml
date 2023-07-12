@@ -1,0 +1,142 @@
+- name: Task for Branch_Office_Policy Network
+  cp_mgmt_access_layer:
+    name: Branch_Office_Policy Network
+    shared: false
+    applications_and_url_filtering: false
+    content_awareness: false
+    mobile_access: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for Customer Service Server Layer
+  cp_mgmt_access_layer:
+    name: Customer Service Server Layer
+    shared: false
+    applications_and_url_filtering: true
+    content_awareness: false
+    mobile_access: false
+    detect_using_x_forward_for: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for Data Center Layer
+  cp_mgmt_access_layer:
+    name: Data Center Layer
+    shared: false
+    applications_and_url_filtering: true
+    content_awareness: true
+    mobile_access: false
+    detect_using_x_forward_for: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for Guest Exception Layer
+  cp_mgmt_access_layer:
+    name: Guest Exception Layer
+    shared: false
+    applications_and_url_filtering: true
+    content_awareness: true
+    mobile_access: false
+    detect_using_x_forward_for: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for Corporate_Policy Network
+  cp_mgmt_access_layer:
+    name: Corporate_Policy Network
+    shared: false
+    applications_and_url_filtering: true
+    content_awareness: true
+    mobile_access: false
+    detect_using_x_forward_for: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for Public FTP Layer
+  cp_mgmt_access_layer:
+    name: Public FTP Layer
+    shared: false
+    applications_and_url_filtering: false
+    content_awareness: true
+    mobile_access: false
+    detect_using_x_forward_for: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for RDP Exceptions Layer
+  cp_mgmt_access_layer:
+    name: RDP Exceptions Layer
+    shared: false
+    applications_and_url_filtering: false
+    content_awareness: false
+    mobile_access: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for Web Control Layer
+  cp_mgmt_access_layer:
+    name: Web Control Layer
+    shared: true
+    applications_and_url_filtering: true
+    content_awareness: true
+    mobile_access: false
+    detect_using_x_forward_for: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: 'web control layer'
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

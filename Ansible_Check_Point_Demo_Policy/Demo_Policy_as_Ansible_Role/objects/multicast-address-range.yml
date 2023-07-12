@@ -1,0 +1,13 @@
+- name: Task for New Multicast Address Range
+  cp_mgmt_multicast_address_range:
+    name: New Multicast Address Range
+    ipv4_address_first: 224.0.0.1
+    ipv4_address_last: 224.0.0.4
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

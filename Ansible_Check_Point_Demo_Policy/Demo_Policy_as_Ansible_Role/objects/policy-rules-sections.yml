@@ -1,0 +1,69 @@
+- name: set-access-section on top of GW Access
+  cp_mgmt_access_section:
+    layer: Branch_Office_Policy Network
+    name: GW Access
+    position: 1
+    state: present
+- name: set-access-section on top of VPN
+  cp_mgmt_access_section:
+    layer: Branch_Office_Policy Network
+    name: VPN
+    position: 4
+    state: present
+- name: set-access-section on top of Internet Access
+  cp_mgmt_access_section:
+    layer: Branch_Office_Policy Network
+    name: Internet Access
+    position: 7
+    state: present
+- name: set-access-section on top of Cleanup
+  cp_mgmt_access_section:
+    layer: Branch_Office_Policy Network
+    name: Cleanup
+    position: 8
+    state: present
+- name: set-access-section on top of Security Gateways Access
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: Security Gateways Access
+    position: 1
+    state: present
+- name: set-access-section on top of VPN
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: VPN
+    position: 3
+    state: present
+- name: set-access-section on top of Access To Internet
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: Access To Internet
+    position: 4
+    state: present
+- name: set-access-section on top of DMZ
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: DMZ
+    position: 6
+    state: present
+- name: set-access-section on top of Data Center Access
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: Data Center Access
+    position: 12
+    state: present
+- name: set-access-section on top of Temporary Access Grant
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: Temporary Access Grant
+    position: 14
+    state: present
+- name: set-access-section on top of Cleanup
+  cp_mgmt_access_section:
+    layer: Corporate_Policy Network
+    name: Cleanup
+    position: 15
+    state: present
+
+- name: publish the session
+  cp_mgmt_publish:

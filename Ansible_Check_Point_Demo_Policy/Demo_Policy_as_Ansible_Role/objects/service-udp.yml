@@ -1,0 +1,26 @@
+- name: Task for New_UDP_Service_1
+  cp_mgmt_service_udp:
+    name: New_UDP_Service_1
+    accept_replies: false
+    port: '69'
+    protocol: TFTP
+    match_by_protocol_signature: true
+    override_default_settings: false
+    session_timeout: 0
+    use_default_session_timeout: true
+    match_for_any: true
+    sync_connections_on_cluster: true
+    aggressive_aging:
+      enable: true
+      timeout: 360
+      use_default_timeout: false
+      default_timeout: 0
+    keep_connections_open_after_policy_installation: false
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
