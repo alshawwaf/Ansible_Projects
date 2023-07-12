@@ -1,7 +1,7 @@
 
 * Each Playbook is a full example for a Check Point Gaia Ansible Module
 
-** Example inventory (hosts) file:
+> Example inventory (hosts) file:
 ```
 [checkpoint:children]
 mgmt_1
