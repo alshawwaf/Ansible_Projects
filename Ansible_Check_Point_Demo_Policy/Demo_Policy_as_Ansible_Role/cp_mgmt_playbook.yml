@@ -1,0 +1,43 @@
+- name: Playbook for rules and objects exported to Ansible from the Check Point API
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: false
+  collections:
+  - check_point.mgmt
+  vars:
+    state: present
+  tasks:
+  - include_tasks: '{{item}}'
+    loop:
+    - objects/application-site-category.yml
+    - objects/simple-gateway.yml
+    - objects/address-range.yml
+    - objects/application-site.yml
+    - objects/dns-domain.yml
+    - objects/dynamic-object.yml
+    - objects/host.yml
+    - objects/multicast-address-range.yml
+    - objects/network.yml
+    - objects/package.yml
+    - objects/security-zone.yml
+    - objects/service-dce-rpc.yml
+    - objects/service-group.yml
+    - objects/service-icmp.yml
+    - objects/service-icmp6.yml
+    - objects/service-other.yml
+    - objects/service-rpc.yml
+    - objects/service-sctp.yml
+    - objects/service-tcp.yml
+    - objects/service-udp.yml
+    - objects/tag.yml
+    - objects/time.yml
+    - objects/vpn-community-meshed.yml
+    - objects/vpn-community-star.yml
+    - objects/wildcard.yml
+    - objects/access-layer.yml
+    - objects/access-role.yml
+    - objects/group.yml
+    - objects/application-site-group.yml
+    - objects/group-with-exclusion.yml
+    - objects/policy-rules.yml
+    - objects/policy-rules-sections.yml
