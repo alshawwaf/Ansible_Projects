@@ -1,0 +1,27 @@
+- name: Check Point Access Layers
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: false
+  collections:
+  - check_point.mgmt
+  vars:
+    state: present
+    ansible_checkpoint_domain: "Ottawa"
+  tasks:
+    - name: Task for Icmp16
+      cp_mgmt_service_icmp6:
+        name: Icmp16
+        icmp_type: 5
+        icmp_code: 7
+        keep_connections_open_after_policy_installation: false
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+
+    - name: publish the session
+      cp_mgmt_publish:

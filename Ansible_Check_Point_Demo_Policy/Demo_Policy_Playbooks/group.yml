@@ -1,0 +1,52 @@
+- name: Check Point Access Layers
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: false
+  collections:
+  - check_point.mgmt
+  vars:
+    state: present
+    ansible_checkpoint_domain: "Ottawa"
+  tasks:
+    - name: Task for Corporate LANs
+      cp_mgmt_group:
+        name: Corporate LANs
+        members:
+        - Sales LAN
+        - HQ LAN
+        - HR LAN
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for New Group 1
+      cp_mgmt_group:
+        name: New Group 1
+        members: []
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for New Group 2
+      cp_mgmt_group:
+        name: New Group 2
+        members: []
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+
+    - name: publish the session
+      cp_mgmt_publish:

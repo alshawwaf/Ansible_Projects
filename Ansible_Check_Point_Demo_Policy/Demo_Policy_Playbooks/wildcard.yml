@@ -1,0 +1,26 @@
+- name: Check Point Access Layers
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: false
+  collections:
+  - check_point.mgmt
+  vars:
+    state: present
+    ansible_checkpoint_domain: "Ottawa"
+  tasks:
+    - name: Task for New Wildcard 1
+      cp_mgmt_wildcard:
+        name: New Wildcard 1
+        ipv4_address: 192.168.2.1
+        ipv4_mask_wildcard: 0.0.0.128
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+
+    - name: publish the session
+      cp_mgmt_publish:

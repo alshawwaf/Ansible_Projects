@@ -1,0 +1,101 @@
+- name: Check Point Access Layers
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: false
+  collections:
+  - check_point.mgmt
+  vars:
+    state: present
+    ansible_checkpoint_domain: "Ottawa"
+  tasks:
+    - name: Task for Admins
+      cp_mgmt_access_role:
+        name: Admins
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for Finance User
+      cp_mgmt_access_role:
+        name: Finance User
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for Guests
+      cp_mgmt_access_role:
+        name: Guests
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for HR
+      cp_mgmt_access_role:
+        name: HR
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for IT Department
+      cp_mgmt_access_role:
+        name: IT Department
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for IT Helpdesk Users
+      cp_mgmt_access_role:
+        name: IT Helpdesk Users
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for Remote Access Users
+      cp_mgmt_access_role:
+        name: Remote Access Users
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+    - name: Task for Sales
+      cp_mgmt_access_role:
+        name: Sales
+        comments: ''
+        color: black
+        tags: []
+        state: '{{state}}'
+        ignore_warnings: false
+        ignore_errors: false
+        wait_for_task: true
+        wait_for_task_timeout: '30'
+
+    - name: publish the session
+      cp_mgmt_publish:
