@@ -1,0 +1,28 @@
+---
+- name: retreive settings and Enables/Disables IPv6 support in the machine's operating system.
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    - allow_reboot: true
+    - ipv6_enabled: true
+  tasks:
+    - name: get the existing ipv6 settings
+      cp_gaia_ipv6_facts:
+      register: original_ipv6_settings
+
+    - name: print ipv6 on login page
+      debug:
+        msg: "{{ original_ipv6_settings }}"
+
+    - name: Set IPv6 status
+      check_point.gaia.cp_gaia_ipv6:
+        enabled: "{{ ipv6_enabled }}"
+      register: new_ipv6_settings
+
+    - name: print ipv6 results if changed
+      debug:
+        msg: "{{ new_ipv6_settings }}"
+      when: new_ipv6_settings['changed'] == true

@@ -1,0 +1,41 @@
+---
+- name: retreiving and changing the Gaia Radius server settings
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    - state: present
+  tasks:
+    - name: get the existing radius server settings
+      cp_gaia_radius_server_facts:
+      register: original_radius_settings
+
+    - name: print original radius details
+      debug:
+        msg: "{{ original_radius_settings }}"
+
+    - name: Change Radius server settings
+      check_point.gaia.cp_gaia_radius_server:
+        # Choices: 90 or 0
+        super_user_uid: 96
+        # Choices: 'scp-only', 'tcsh', 'csh', 'sh', 'no-login', 'bash', 'cli'
+        default_shell: bash
+        nas_ip:
+        servers:
+          [
+            {
+              "priority": 3,
+              "address": "203.0.113.120",
+              "port": 56,
+              "timeout": 1,
+              "secret": "vpn123",
+            },
+          ]
+      register: updated_radius_server_details
+
+    - name: print new proxy server settings
+      debug:
+        msg: "{{ updated_radius_server_details }}"
+      when: updated_radius_server_details['changed'] == true

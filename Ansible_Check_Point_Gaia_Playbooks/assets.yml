@@ -1,0 +1,15 @@
+---
+- name: retreiving Gaia assets
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show assets
+      cp_gaia_asset_facts:
+      register: assets
+
+    - name: print assets details
+      debug:
+        msg: "{{ assets['ansible_facts'] }}"

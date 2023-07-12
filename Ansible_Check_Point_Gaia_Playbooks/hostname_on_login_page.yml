@@ -1,0 +1,25 @@
+---
+- name: Enable/Disable the Gaia hostname on login page (Under System Management -> Messages on Gaia Portal)
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing hostname on login page settings
+      cp_gaia_hostname_on_login_page_facts:
+      register: original_hostname_on_login_page_settings
+
+    - name: print original hostname on login page
+      debug:
+        msg: "{{ original_hostname_on_login_page_settings }}"
+
+    - name: configure hostname on login page settings
+      cp_gaia_hostname_on_login_page:
+        enabled: true
+      register: new_hostname_on_login_page_settings
+
+    - name: print new hostname on login page settings
+      debug:
+        msg: "{{ new_hostname_on_login_page_settings }}"
+      when: new_hostname_on_login_page_settings['changed'] == true

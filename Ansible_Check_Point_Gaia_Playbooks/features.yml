@@ -1,0 +1,15 @@
+---
+- name: retrieving Gaia features (Supported starting Gaia API V1.7)
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show features
+      cp_gaia_features_facts:
+      register: features
+
+    - name: print features details
+      debug:
+        msg: "{{ features['ansible_facts'] }}"

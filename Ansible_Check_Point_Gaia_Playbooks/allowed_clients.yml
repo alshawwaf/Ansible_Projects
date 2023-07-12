@@ -1,0 +1,32 @@
+---
+- name: Retrieving and changing the allowed clients-allowed hosts- ( System Management -> Host Access in Gaia Portal)
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show allowed clients
+      cp_gaia_allowed_clients_facts:
+      register: original_allowed_clients
+
+    - name: print original allowed clients details
+      debug:
+        msg: "{{ original_allowed_clients['ansible_facts'] }}"
+
+    - name: Set allowed clients
+      cp_gaia_allowed_clients:
+        allowed_networks:
+          [
+            { "subnet": "192.168.0.0", "mask_length": 16 },
+            { "subnet": "10.0.1.0", "mask_length": 24 },
+            { "subnet": "203.0.113.0", "mask_length": 24 },
+          ]
+        allowed_hosts: ["10.0.1.131", "192.168.4.253"]
+        allowed_any_host: true
+      register: change_allowed_clients_results
+
+    - name: print original allowed clients details
+      debug:
+        msg: "{{ change_allowed_clients_results }}"
+      when: change_allowed_clients_results['changed'] == true

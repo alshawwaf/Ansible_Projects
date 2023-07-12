@@ -1,0 +1,40 @@
+---
+- name: Run First Time Wizard configuration.
+  hosts: gw_3
+  connection: httpapi
+  collections:
+    - check_point.gaia
+  vars:
+  tasks:
+    - name: Run First time Wizard (Initial Setup)
+      cp_gaia_initial_setup:
+        wait_for_task: True
+        security_management: {
+            multi_domain: False,
+            # Type choices: 'primary', 'secondary', 'log-server', default='primary'
+            type: primary,
+            activation_key: vpn123,
+            leading_interface: "eth0",
+            gui_clients:
+              {
+                range:
+                  {
+                    "first_IPv4_range": "10.0.1.0",
+                    "last_IPv4_range": "10.0.1.200",
+                  },
+              },
+          }
+        # Possible Guid Clients options:
+        # network: { "address": "10.0.0.0", "mask_length": "8" },
+        # single_ip: "10.0.1.131",
+        security_gateway:
+          {
+            cluster_member: False,
+            activation_key: vpn123,
+            dynamically_assigned_ip: False,
+          }
+      register: FTW_results
+
+    - name: print FTW response
+      debug:
+        msg: "{{ FTW_results }}"

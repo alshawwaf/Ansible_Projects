@@ -1,0 +1,38 @@
+---
+- name: retreiving and changing the Gaia TACACS server settings
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    - state: present
+  tasks:
+    - name: get the existing tacacs server settings
+      cp_gaia_tacacs_server_facts:
+      register: original_tacacs_settings
+
+    - name: print original tacacs details
+      debug:
+        msg: "{{ original_tacacs_settings['ansible_facts'] }}"
+
+    - name: Change Tacacs server settings
+      cp_gaia_tacacs_server:
+        enabled: true
+        # Choices: 90 or 0
+        super_user_uid: 96
+        servers:
+          [
+            {
+              "priority": 3,
+              "address": "203.0.113.120",
+              "timeout": 1,
+              "secret": "vpn123",
+            },
+          ]
+      register: updated_tacacs_server_details
+
+    - name: print new tacacs server settings
+      debug:
+        msg: "{{ updated_tacacs_server_details }}"
+      when: updated_tacacs_server_details['changed'] == true

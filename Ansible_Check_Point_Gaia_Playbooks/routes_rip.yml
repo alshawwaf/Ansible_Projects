@@ -1,0 +1,21 @@
+---
+- name: retreiving the Gaia active RIP Routes
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the rip routes
+      cp_gaia_routes_rip_facts:
+        # default 50
+        limit: 20
+        # Default 0
+        offset: 0
+        # ASC or DESC
+        order: DESC
+      register: rip_routes
+
+    - name: print the rip routes
+      debug:
+        msg: "{{ rip_routes['ansible_facts'] }}"

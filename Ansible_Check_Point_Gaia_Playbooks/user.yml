@@ -1,0 +1,44 @@
+---
+- name: retreiving and configuring the Gaia user details
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the Gaia veuser info
+      cp_gaia_user_facts:
+      register: user_info
+
+    - name: print the user info
+      debug:
+        msg: "{{ user_info['ansible_facts']}}"
+
+    - name: add a new user with full details
+      cp_gaia_user:
+        state: present
+        name: ansible_user
+        # shell options: 'scp-only', 'tcsh', 'csh', 'sh', 'no-login', 'bash', 'cli'
+        # bash is allowed if the assigned Role has expert mode access with RW
+        shell: bash
+        # Homedir is Optional
+        homedir: /home/ansible_user
+        secondary_system_groups:
+        password_hash:
+        # relevant only when a password is set
+        must_change_password: false
+        real_name: Ansible
+        # unlock: false
+        # choices: 'CLI', 'Web-UI', 'Gaia-API' , default is ['CLI' and 'Web-UI']
+        allow_access_using: ["Gaia-API"]
+        roles: ["adminRole"]
+        # default group is 100
+        primary_system_group_id: 100
+        password: Cpwins!1
+        uid: 105
+      register: modified_user_details
+
+    - name: print modified user details
+      debug:
+        msg: "{{ modified_user_details }}"
+      when: modified_user_details['changed'] == true

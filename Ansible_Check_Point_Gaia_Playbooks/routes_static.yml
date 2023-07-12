@@ -1,0 +1,35 @@
+---
+- name: retreiving and changing the Gaia Static Routes
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing static routes settings
+      cp_gaia_static_route_facts:
+      register: original_static_routes_settings
+
+    - name: print original static routes settings
+      debug:
+        msg: "{{ original_static_routes_settings['ansible_facts'] }}"
+
+    - name: Set new static route
+      cp_gaia_static_route:
+        state: present
+        address: 192.168.4.0
+        mask_length: 24
+        comment: "added via Ansible"
+        # default rank is 60
+        rank: 60
+        ping: false
+        scope_local: false
+        # Choices: 'blackhole', 'gateway', 'reject'. Gateway is called "Normal" in the portal
+        type: gateway
+        next_hop: [{ "gateway": "203.0.113.1", "priority": 2 }]
+      register: new_static_route
+
+    - name: print new static route details
+      debug:
+        msg: "{{ new_static_route }}"
+      when: new_static_route['changed'] == true

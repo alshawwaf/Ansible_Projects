@@ -1,0 +1,27 @@
+---
+- name: retrieving Gaia diagnostics
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show diagnostics topics (topics can be used below with cp_gaia_diagnostics_facts )
+      cp_gaia_diagnostics_topics_facts:
+      register: diagnostics_topics
+
+    - name: print diagnostics topics details
+      debug:
+        msg: "{{ diagnostics_topics['ansible_facts'] }}"
+
+    - name: Show diagnostics
+      cp_gaia_diagnostics_facts:
+        # Options:  OS
+        category: os
+        # Options: 'memory', 'disk', 'cpu'
+        topic: cpu
+      register: diagnostics
+
+    - name: print diagnostics details
+      debug:
+        msg: "{{ diagnostics['ansible_facts'] }}"

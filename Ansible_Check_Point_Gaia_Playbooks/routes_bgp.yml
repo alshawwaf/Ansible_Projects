@@ -1,0 +1,21 @@
+---
+- name: retreiving the Gaia BGP Routes
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing BGP routes
+      cp_gaia_routes_bgp_facts:
+        # default 50
+        limit: 20
+        # Default 0
+        offset: 0
+        # ASC or DESC
+        order: DESC
+      register: original_bgp_routes_aggregation
+
+    - name: print original bgp routes aggregation
+      debug:
+        msg: "{{ original_bgp_routes_aggregation['ansible_facts'] }}"

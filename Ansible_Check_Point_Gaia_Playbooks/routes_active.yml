@@ -1,0 +1,21 @@
+---
+- name: retreiving the Gaia Active Routes
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the active routes
+      cp_gaia_routes_facts:
+        # default 50
+        limit: 20
+        # Default 0
+        offset: 0
+        # ASC or DESC
+        order: DESC
+      register: active_routes
+
+    - name: print the active routes
+      debug:
+        msg: "{{ active_routes['ansible_facts'] }}"

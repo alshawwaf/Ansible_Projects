@@ -1,0 +1,61 @@
+---
+- name: retrieving and changing Gaia bond Interfaces
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    - interface_name: bond1
+  tasks:
+    - name: Show bond interface by specifying its name
+      cp_gaia_bond_interface_facts:
+        name: "{{ interface_name }}"
+      register: bond_details
+
+    - name: print original interface details
+      debug:
+        msg: "{{ bond_details['ansible_facts'] }}"
+
+    - name: Configure the interface
+      cp_gaia_bond_interface:
+        name: "{{ interface_name }}"
+        ipv4_address: 10.10.10.1
+        ipv4_mask_length: 24
+        enabled: false
+        comments: Set via Ansible
+        ipv6_address:
+        ipv6_autoconfig: false
+        ipv6_mask_length:
+        mtu: 1500
+        # Bond Settings
+        members:
+          - eth4
+          - eth5
+        # choices: 'layer2' or 'layer3+4'
+        xmit_hash_policy: "layer2"
+        down_delay: 200
+        up_delay: 200
+        primary:
+        # Choices slow or fast, only set when using 8023AD
+        lacp_rate: slow
+        # choices 'round-robin', 'active-backup', 'xor', '8023AD'
+        mode: "8023AD"
+        mii_interval: 100
+        # Get IPv4 from a DHCP server
+        dhcp: {
+            enabled: true,
+            # default is 60
+            server_timeout: 60,
+            # default is 300
+            retry: 300,
+            leasetime: 900,
+            # default is 10
+            reacquire_timeout: 10,
+          }
+      register: updated_interface_details
+
+    - name: print new interface details if changed
+      debug:
+        msg: "{{ updated_interface_details }}"
+      when: updated_interface_details['changed'] == true

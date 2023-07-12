@@ -1,0 +1,27 @@
+---
+- name: retrieving and changing the Gaia hostname
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    hostname: R81_20_GW
+  tasks:
+    - name: get the existing hostname
+      cp_gaia_hostname_facts:
+      register: original_hostname
+
+    - name: print original hostname
+      debug:
+        msg: "{{ original_hostname }}"
+
+    - name: change the hostname
+      cp_gaia_hostname:
+        name: "{{ hostname }}"
+      register: changing_hostname_output
+
+    - name: print changing hostname results if changed
+      debug:
+        msg: "{{ changing_hostname_output }}"
+      when: changing_hostname_output['changed'] == true

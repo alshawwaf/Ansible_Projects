@@ -1,0 +1,26 @@
+---
+- name: retrieving and changing the Gaia banner
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing banner
+      cp_gaia_banner_facts:
+      register: original_banner
+
+    - name: print original banner
+      debug:
+        msg: "{{ original_banner}}"
+
+    - name: change the banner
+      cp_gaia_banner:
+        msg: "This system is for authorized use only. @Securty Team"
+        enabled: true
+      register: changing_banner_output
+
+    - name: print changing banner results when changed
+      debug:
+        msg: "{{ changing_banner_output }}"
+      #when: changing_banner_output['changed'] == true

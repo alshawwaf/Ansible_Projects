@@ -1,0 +1,29 @@
+---
+- name: retreiving and changing the Gaia proxy settings
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    - state: present
+  tasks:
+    - name: get the existing Proxy settings
+      cp_gaia_proxy_facts:
+      register: original_proxy_settings
+
+    - name: print original proxy details
+      debug:
+        msg: "{{ original_proxy_settings }}"
+
+    - name: Set proxy
+      cp_gaia_proxy:
+        state: "{{ state }}"
+        address: 71.19.249.118
+        port: 8080
+      register: updated_proxy_details
+
+    - name: print new proxy server settings
+      debug:
+        msg: "{{ updated_proxy_details }}"
+      when: updated_proxy_details['changed'] == true

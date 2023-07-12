@@ -1,0 +1,8 @@
+- name: Run reboot if settings changed (required)
+  cp_gaia_run_reboot:
+    # default true
+    wait_for_task: false
+  async: 300
+  poll: 5
+  # default timeout is 30 second. Task will fail if Gaia is not back up by then.
+  when: new_ipv6_settings['changed'] == true and allow_reboot == true

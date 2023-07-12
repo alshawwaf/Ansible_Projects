@@ -1,0 +1,28 @@
+---
+- name: retrieve and configure the Gaia Message of the day (Under System Management -> Messages on Gaia Portal)
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    MOTD_enabled: false
+    MOTD: "Hello Today"
+  tasks:
+    - name: get the existing MOTD on login page settings
+      cp_gaia_message_of_the_day_facts:
+      register: original_MOTD_settings
+
+    - name: print original MTD settings
+      debug:
+        msg: "{{ original_MOTD_settings }}"
+
+    - name: configure the message of the day
+      cp_gaia_message_of_the_day:
+        enabled: "{{ MOTD_enabled }}"
+        msg: "{{ MOTD }}"
+      register: new_MOTD_settings
+
+    - name: print new MTD settings
+      debug:
+        msg: "{{ new_MOTD_settings }}"

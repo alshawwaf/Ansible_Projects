@@ -1,0 +1,29 @@
+---
+- name: retreiving and changing the Gaia syslog settings (System Management -> system logging in Gaia Portal)
+  hosts: gw_1
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing syslog settings
+      cp_gaia_syslog_facts:
+      register: original_syslog_settings
+
+    - name: print original syslog settings
+      debug:
+        msg: "{{ original_syslog_settings }}"
+
+    - name: Modify system logging configuration
+      cp_gaia_syslog:
+        send_to_mgmt: true
+        # default syslog file is /var/log/messages
+        filename: "/var/log/messages"
+        cp_logs: false
+        audit_log: true
+      register: new_syslog_settings
+
+    - name: print new remote syslog settings
+      debug:
+        msg: "{{ new_syslog_settings }}"
+      when: new_syslog_settings['changed'] == true

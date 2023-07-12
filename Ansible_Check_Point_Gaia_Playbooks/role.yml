@@ -1,0 +1,33 @@
+---
+- name: retreiving and configuring the Gaia Role details  (Supported starting Gaia API V1.7)
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the Gaia Role details
+      cp_gaia_role_facts:
+      register: role_details
+
+    - name: print the role details
+      debug:
+        msg: "{{ role_details['ansible_facts']}}"
+
+    - name: Add new role
+      cp_gaia_role:
+        name: ansible_role
+        extended_commands: ["LSMenabler"]
+        features:
+          [
+            { "name": "dhcp", "permission": "read-write" },
+            { "name": "ntp", "permission": "read-write" },
+            { "name": "syslog", "permission": "read-write" },
+            { "name": "backup", "permission": "read-write" },
+          ]
+      register: new_role_settings
+
+    - name: print new role settings
+      debug:
+        msg: "{{ new_role_settings }}"
+      when: new_role_settings['changed'] == true

@@ -1,0 +1,47 @@
+---
+- name: retrieving and changing the Gaia physical Interfaces
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    - interface_name: eth8
+  tasks:
+    - name: Show physical interface by specifying its name
+      cp_gaia_physical_interfaces_facts:
+        name: "{{ interface_name }}"
+      register: interface_details
+
+    - name: print original interface details
+      debug:
+        msg: "{{ interface_details['ansible_facts'] }}"
+
+    - name: Configure the interface
+      cp_gaia_physical_interface:
+        name: "{{ interface_name }}"
+        ipv4_address: 10.0.4.44
+        ipv4_mask_length: 24
+        # monitor mode is not supported for clusters
+        monitor_mode: false
+        enabled: true
+        auto_negotiation: true #(or specify the speed and duplex in the module. See below)
+        comments: set via Ansible
+        ipv6_address:
+        ipv6_autoconfig: false
+        # options: 10M, 100M, 1000M, 10G
+        # speed: 1000M
+        # half, full
+        # duplex: full
+        mtu: 1500
+        tx_ringsize: 2048
+        rx_ringsize: 1024
+        # it's possible to change the MAC address if needed
+        mac_addr: 00:50:56:87:3e:c5
+        ipv6_mask_length:
+      register: updated_interface_details
+
+    - name: print new interface details if changed
+      debug:
+        msg: "{{ updated_interface_details }}"
+      when: updated_interface_details['changed'] == true

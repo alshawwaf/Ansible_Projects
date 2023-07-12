@@ -1,0 +1,15 @@
+---
+- name: retrieving the Gaia API versions
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show API versions
+      cp_gaia_api_versions_facts:
+      register: api_versions
+
+    - name: print API versions
+      debug:
+        msg: "{{ api_versions['ansible_facts'] }}"

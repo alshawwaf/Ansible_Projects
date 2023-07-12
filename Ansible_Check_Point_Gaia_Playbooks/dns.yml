@@ -1,0 +1,28 @@
+---
+- name: retrieving and changing the Gaia DNS settings
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing DNS settings
+      cp_gaia_dns_facts:
+      register: original_dns_settings
+
+    - name: print original DNS settings
+      debug:
+        msg: "{{ original_dns_settings }}"
+
+    - name: Setting dns servers for Gaia
+      cp_gaia_dns:
+        suffix: "gw_3.local"
+        primary: "10.0.2.100"
+        tertiary: "8.8.8.8"
+        secondary: "4.4.2.2"
+      register: updated_DNS_details
+
+    - name: print new DNS server settings
+      debug:
+        msg: "{{ updated_DNS_details }}"
+      when: updated_DNS_details['changed'] == true

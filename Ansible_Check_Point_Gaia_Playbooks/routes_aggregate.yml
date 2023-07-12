@@ -1,0 +1,21 @@
+---
+- name: retreiving the Gaia  Routes Aggregation
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing routes aggregation settings
+      cp_gaia_routes_aggregate_facts:
+        # default 50
+        limit: 20
+        # Default 0
+        offset: 0
+        # ASC or DESC
+        order: DESC
+      register: original_static_routes_aggregation
+
+    - name: print original static routes aggregation
+      debug:
+        msg: "{{ original_static_routes_aggregation['ansible_facts'] }}"

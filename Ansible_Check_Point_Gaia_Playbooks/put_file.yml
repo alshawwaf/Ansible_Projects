@@ -1,0 +1,35 @@
+---
+- name: create a file on a check point Gaia device
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  vars:
+    file_name: ansible_file.txt
+  tasks:
+    - name: Create a file with content on the home directory ( path is not provided ). Override if exists.
+      cp_gaia_put_file:
+        file_name: "{{ file_name }}"
+        text_content: created on "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
+        override: true
+      register: put_file_results
+
+    - name: send a task to list the home directory to verify the file exists and print its content
+      cp_gaia_run_script:
+        script: ls -al /home/admin | grep "{{ file_name }}" ; cat /home/admin/"{{ file_name }}"
+      register: script_response
+
+    - name: get task_id
+      set_fact:
+        task_id: '{{script_response["run_script"]["tasks"][0]["task-id"]}}'
+
+    - name: Show the reponse using task-id
+      cp_gaia_task_facts:
+        task_id: ["{{task_id}}"]
+      register: directory_contents
+
+    - name: list directory results
+      debug:
+        # set "stdout_callback = yaml" in the ansible.cfg file for more Human-readable output
+        msg: "{{ directory_contents['ansible_facts']['tasks'][0]['task_details'][0]['output'] | b64decode | to_yaml  }}"

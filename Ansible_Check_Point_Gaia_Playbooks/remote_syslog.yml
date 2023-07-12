@@ -1,0 +1,31 @@
+---
+- name: retreiving and changing the Gaia remote syslog settings (System Management -> system logging in Gaia Portal)
+  hosts: gw_1
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing remote syslog settings
+      cp_gaia_remote_syslog_facts:
+      register: original_remote_syslog_settings
+
+    - name: print original syslog settings
+      debug:
+        msg: "{{ original_remote_syslog_settings }}"
+
+    - name: Modifying the remote syslog messaging level
+      cp_gaia_remote_syslog:
+        state: present
+        server_ip: "203.0.113.120"
+        # port adn protocol are supported starting R81.20
+        #port: 514,
+        #protocol: udp
+        # supported levels: emerg, alert, crit, err, warning, notice, info, debug, all
+        level: "debug"
+      register: new_remote_syslog_settings
+
+    - name: print new remote syslog settings
+      debug:
+        msg: "{{ new_remote_syslog_settings }}"
+      when: new_remote_syslog_settings['changed'] == true

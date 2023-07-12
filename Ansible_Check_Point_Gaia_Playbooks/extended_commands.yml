@@ -1,0 +1,14 @@
+---
+- name: retrieving Gaia extended Commands (Supported starting Gaia API V1.7)
+  hosts: gw_3
+  connection: httpapi
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show extended commands
+      cp_gaia_extended_commands_facts:
+      register: extended_commands
+
+    - name: print extended commands details
+      debug:
+        msg: "{{ extended_commands['ansible_facts'] }}"

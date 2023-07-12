@@ -1,0 +1,11 @@
+---
+- name: ping module playbook
+  hosts: checkpoint
+  tasks:
+    - name: ping hosts
+      ping:
+      register: ping_output
+
+    - name: view results from ping
+      debug:
+        msg: "{{ping_output}}"

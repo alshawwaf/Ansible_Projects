@@ -1,0 +1,40 @@
+---
+- name: retrieving and changing the Gaia NTP settings (System Management -> Set Time and Date in Gaia Portal)
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the existing NTP settings
+      cp_gaia_ntp_facts:
+      register: original_ntp_settings
+
+    - name: print original NTP settings
+      debug:
+        msg: "{{ original_ntp_settings }}"
+
+    - name: Setting ntp servers for the system
+      check_point.gaia.cp_gaia_ntp:
+        enabled: true
+        servers: [
+            {
+              # version between 1 and 4
+              "version": 4,
+              # Options: Primary and secondary
+              "type": "primary",
+              # Gaia Portal supports NTP server name. API and Ansible support only addresses
+              "address": "0.ca.pool.ntp.org",
+            },
+            {
+              "version": 4,
+              "type": "secondary",
+              "address": "1.ca.pool.ntp.org",
+            },
+          ]
+      register: new_ntp_settings
+
+    - name: print new NTP settings
+      debug:
+        msg: "{{ new_ntp_settings }}"
+      when: new_ntp_settings['changed'] == true

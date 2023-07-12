@@ -1,0 +1,15 @@
+---
+- name: retreiving the Gaia available timezone details
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the Gaia timezone details
+      cp_gaia_timezones_facts:
+      register: timezone_details
+
+    - name: print the available timezone details
+      debug:
+        msg: "{{ timezone_details['ansible_facts'] }}"

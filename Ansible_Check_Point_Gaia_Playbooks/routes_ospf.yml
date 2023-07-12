@@ -1,0 +1,21 @@
+---
+- name: retreiving the Gaia active OSPF Routes
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the ospf routes
+      cp_gaia_routes_ospf_facts:
+        # default 50
+        limit: 20
+        # Default 0
+        offset: 0
+        # ASC or DESC
+        order: DESC
+      register: ospf_routes
+
+    - name: print the ospf routes
+      debug:
+        msg: "{{ ospf_routes['ansible_facts'] }}"

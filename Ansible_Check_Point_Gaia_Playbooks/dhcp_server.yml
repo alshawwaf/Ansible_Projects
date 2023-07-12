@@ -1,0 +1,58 @@
+---
+- name: retreiving and changing Gaia DHCP Server
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: Show DHCP Server settings
+      cp_gaia_dhcp_server_facts:
+      register: dhcp_server_details
+
+    - name: print original DHCP server details
+      debug:
+        msg: "{{ dhcp_server_details['ansible_facts'] }}"
+
+    - name: Configure the DHCP Server
+      cp_gaia_dhcp_server:
+        enabled: false
+        subnets:
+          [
+            {
+              "subnet": "10.0.4.0",
+              "netmask": 24,
+              "max_lease": 86400,
+              "default_lease": 43200,
+              "default_gateway": "10.0.4.1",
+              "ip_pools":
+                [
+                  {
+                    "start": "10.0.4.20",
+                    "end": "10.0.4.200",
+                    "enabled": True,
+                    "include": "include",
+                  },
+                  {
+                    "start": "10.0.4.60",
+                    "end": "10.0.4.80",
+                    "enabled": True,
+                    "include": "exclude",
+                  },
+                ],
+              "dns":
+                {
+                  "domain_name": "gw.local",
+                  "primary": "10.0.2.100",
+                  "secondary": "8.8.8.8",
+                  "tertiary": "8.8.4.4",
+                },
+              "enabled": True,
+            },
+          ]
+      register: updated_dhcp_server_details
+
+    - name: print new DHCP server settings
+      debug:
+        msg: "{{ updated_dhcp_server_details }}"
+      when: updated_dhcp_server_details['changed'] == true

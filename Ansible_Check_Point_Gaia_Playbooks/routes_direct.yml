@@ -1,0 +1,21 @@
+---
+- name: retreiving the Gaia Directly Connected Routes
+  hosts: gw_3
+  connection: httpapi
+  gather_facts: false
+  collections:
+    - check_point.gaia
+  tasks:
+    - name: get the directly connected routes
+      cp_gaia_routes_direct_facts:
+        # default 50
+        limit: 20
+        # Default 0
+        offset: 0
+        # ASC or DESC
+        order: DESC
+      register: directly_connected_routes
+
+    - name: print the directly connected routes
+      debug:
+        msg: "{{ directly_connected_routes['ansible_facts'] }}"
