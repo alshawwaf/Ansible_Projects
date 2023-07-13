@@ -18,4 +18,4 @@ checkpoint_gw
 203.0.113.81 ansible_user=admin ansible_password=vpn123
 
 [checkpoint:vars]
-ansible_python_interpreter=/opt/CPsuite-R81/fw1/Python/bin/python3.7
+ansible_python_interpreter=/opt/CPsuite-R81.10/fw1/Python/bin/python3.7
