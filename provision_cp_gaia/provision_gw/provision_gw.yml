@@ -1,0 +1,86 @@
+---
+- name: set shell to bash to prepare for FTW
+  hosts: checkpoint_gw
+  gather_facts: no
+  tasks:
+
+    - name: configure default shell to bash (make sure to set /etc/ansible/ansible.cfg [defaults] host_key_checking = false)
+      raw:  set user admin shell /bin/bash
+      register: shell_change
+    
+    - name: print first task results 
+      debug:
+       msg: '{{ shell_change }}'  
+       
+    - name: reset ssh connection
+      meta: reset_connection
+
+
+- name: run FTW on Gateway
+  hosts: checkpoint_gw
+  gather_facts: no
+
+  vars:
+    hostname: hq_r81_10_gw
+    sickey: vpn123
+    ipaddr_v4: 203.0.113.21
+    masklen_v4: 24
+    default_gw_v4: 203.0.113.1
+
+  tasks:
+    - name: "Run the First Time Wizard (FTW) to build Security Gateway on {{hostname}}"
+      command: config_system --config-string ''hostname={{hostname}}&ftw_sic_key={{sickey}}&install_security_managment=false&install_mgmt_primary=false&install_security_gw=true&gateway_daip=false&install_ppak=true&gateway_cluster_member=false&download_info=true&ipstat_v6=off&ipstat_v4=manually&iface=eth0&ipaddr_v4={{ ipaddr_v4 }}&masklen_v4={{ masklen_v4 }}&default_gw_v4={{ default_gw_v4 }}&reboot_if_required=true''
+      async: 900
+      poll: 0
+
+    - name: "Wait until FTW completes, time outs after 15 minutes"
+      wait_for:
+        path: /etc/.wizard_accepted
+        timeout: 900
+        state: present
+        msg: "Timeout to find file /etc/.wizard_accepted"
+
+    - name: Wait for the reboot to complete
+      wait_for_connection:
+        connect_timeout: 5
+        sleep: 5
+        delay: 10
+        timeout: 300
+
+- name: Create simple Gateway object and establish SIC
+  connection: httpapi
+  hosts: checkpoint_mgmt
+  gather_facts: no
+  vars:
+    gw_name: hq_r81_10_gw
+  tasks: 
+    - name: create simple Gateway
+      check_point.mgmt.cp_mgmt_simple_gateway: 
+        firewall: true
+        gateway_version: R81.10
+        ip_address: "203.0.113.21"
+        name: "{{ gw_name }}"
+        one_time_password: vpn123
+        state: present
+        auto_publish_session: yes
+      register: gateway_created
+
+    - name: show GW creation results
+      debug: 
+        msg: "{{ gateway_created }}"
+
+    - name: Install Access Policy
+      cp_mgmt_install_policy:
+        access: true
+        threat_prevention: false
+        policy_package: hq_policy_package
+        targets:
+        - '{{ gw_name }}'
+      when: No_Policy_Install is not defined
+      register: policy_installation
+
+    - name: show policy installation results
+      debug: 
+        msg: "{{ policy_installation }}"
+...
+
