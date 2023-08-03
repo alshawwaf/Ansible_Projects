@@ -1,0 +1,53 @@
+---
+- name: set shell to bash to prepare for FTW
+  hosts: checkpoint_mgmt
+  gather_facts: no
+  tasks:
+
+    - name: configure default shell to bash 
+      raw:  set user admin shell /bin/bash
+      register: shell_change
+    
+    - name: print first task results 
+      debug:
+       msg: '{{ shell_change }}'  
+       
+    - name: reset ssh connection, next login will use bash
+      meta: reset_connection
+
+- name: run FTW on mgmt
+  hosts: checkpoint_mgmt
+  gather_facts: no
+  vars:
+    hostname: hq_mgmt_r81_10
+    ipaddr_v4: 203.0.113.20
+    masklen_v4: 24
+    default_gw_v4: 203.0.113.1
+
+  tasks:
+    - name: Run the First Time Wizard (FTW) to build Mgmt on {{hostname}}
+      command: config_system --config-string ''hostname={{hostname}}&mgmt_admin_radio=gaia_admin&mgmt_gui_clients_radio=any&install_security_managment=true&install_mgmt_primary=true&download_info=true&ipstat_v6=off&ipstat_v4=manually&iface=eth0&ipaddr_v4={{ ipaddr_v4 }}&masklen_v4={{ masklen_v4 }}&default_gw_v4={{ default_gw_v4 }}&reboot_if_required=true''
+      async: 900
+      poll: 0
+
+    - name: Wait until FTW completes, time outs after 15 minutes
+      wait_for:
+        path: /etc/.wizard_accepted
+        timeout: 900
+        state: present
+        msg: "Timeout to find file /etc/.wizard_accepted"
+
+    - name: Set API server to listen to any source
+      shell: source /etc/bashrc ; mgmt_cli -r true -d "System Data" set api-settings accepted-api-calls-from "All IP addresses"
+
+    - name: restart the API
+      command: api restart
+
+    - name: Check the API status
+      command: api status 
+      register: api_status
+
+    - name: show API state  
+      debug:
+        msg: '{{ api_status.stdout_lines }}'
+...

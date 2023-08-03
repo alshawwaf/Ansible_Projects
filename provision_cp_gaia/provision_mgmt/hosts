@@ -1,0 +1,15 @@
+[checkpoint:children]
+checkpoint_mgmt
+checkpoint_gw
+
+[checkpoint_mgmt]
+203.0.113.20 ansible_user=admin ansible_password=Cpwins!1
+
+[checkpoint_gw]
+203.0.113.21 ansible_user=admin ansible_password=Cpwins!1
+
+[checkpoint:vars]
+ansible_httpapi_use_ssl=True
+ansible_httpapi_validate_certs=False
+ansible_network_os=checkpoint
+ansible_python_interpreter=/opt/CPsuite-R81.10/fw1/Python/bin/python3.7
