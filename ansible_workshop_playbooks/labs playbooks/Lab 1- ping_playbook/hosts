@@ -1,7 +1,7 @@
 [ubuntu]
-203.0.113.61
-203.0.113.62
+10.0.3.61
+10.0.3.62
 
 [ubuntu:vars]
 ansible_user=administrator
-ansible_ssh_pass=vpn123
+ansible_ssh_pass=
