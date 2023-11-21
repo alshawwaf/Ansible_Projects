@@ -3,8 +3,6 @@
   hosts: checkpoint_mgmt
   connection: httpapi  
   gather_facts: no
-
-
   tasks:
 
     - name: SSet Access Layer for URLF and APPI

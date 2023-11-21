@@ -1,20 +1,20 @@
 [ubuntu]
-203.0.113.61
-203.0.113.62
+10.0.3.61
+10.0.3.62
 
 [ubuntu:vars]
-ansible_user=administrator
-ansible_ssh_pass=vpn123
+ansible_user=admin
+ansible_ssh_pass=Op1g67323k
 
 [checkpoint:children]
 checkpoint_mgmt
 checkpoint_gw
 
 [checkpoint_mgmt]
-203.0.113.80 ansible_user=admin ansible_password=vpn123
+10.0.1.100 ansible_user=admin ansible_password=vpn123
 
 [checkpoint_gw]
-203.0.113.81 ansible_user=admin ansible_password=vpn123
+10.0.1.10 ansible_user=admin ansible_password=vpn123
 
 [checkpoint_external_gw]
 203.0.113.40 ansible_user=admin ansible_password=vpn123 
@@ -24,5 +24,5 @@ checkpoint_gw
 ansible_httpapi_use_ssl=True
 ansible_httpapi_validate_certs=False
 ansible_network_os=checkpoint
-ansible_python_interpreter=/opt/CPsuite-R81.10/fw1/Python/bin/python3.7
+ansible_python_interpreter=/opt/CPsuite-R81.20/fw1/Python/bin/python3.7
 
