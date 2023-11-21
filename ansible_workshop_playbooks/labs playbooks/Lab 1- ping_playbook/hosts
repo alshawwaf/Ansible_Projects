@@ -3,5 +3,5 @@
 10.0.3.62
 
 [ubuntu:vars]
-ansible_user=administrator
+ansible_user=admin
 ansible_ssh_pass=Op1g67323k
