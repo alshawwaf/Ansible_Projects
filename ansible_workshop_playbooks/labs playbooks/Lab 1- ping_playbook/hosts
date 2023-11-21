@@ -4,4 +4,4 @@
 
 [ubuntu:vars]
 ansible_user=administrator
-ansible_ssh_pass=
+ansible_ssh_pass=Op1g67323k
