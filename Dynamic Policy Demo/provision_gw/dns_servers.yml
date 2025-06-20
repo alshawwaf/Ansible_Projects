@@ -1,0 +1,12 @@
+- name: Setting dns servers for Gaia
+  cp_gaia_dns:
+    #suffix: ""
+    primary: "10.1.2.250"
+    tertiary: "8.8.8.8"
+    secondary: "8.8.4.4"
+  #register: updated_DNS_details
+#
+#- name: print new DNS server settings
+  #debug:
+    #msg: "{{ updated_DNS_details }}"
+  #when: updated_DNS_details['changed'] == true

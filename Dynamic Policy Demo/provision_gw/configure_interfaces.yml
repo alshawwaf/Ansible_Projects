@@ -1,0 +1,115 @@
+- name: Configure the physical interface eth1
+  cp_gaia_physical_interface:
+    name: eth1
+    ipv4_address: 10.1.2.81
+    ipv4_mask_length: 24
+    # monitor mode is not supported for clusters
+    monitor_mode: false
+    enabled: True
+    auto_negotiation: true #(or specify the speed and duplex in the module. See below)
+    comments: set via Ansible
+    ipv6_address:
+    ipv6_autoconfig: false
+    # options: 10M, 100M, 1000M, 10G
+    # speed: 1000M
+    # half, full
+    # duplex: full
+    mtu: 1500
+    tx_ringsize: 2048
+    rx_ringsize: 1024
+    # it's possible to change the MAC address if needed
+    #mac_addr: 00:50:56:87:3e:c5
+    ipv6_mask_length:
+  #register: interface_eth1_details
+#
+#- name: print new interface details if changed
+  #debug:
+    #msg: "{{ interface_eth1_details }}"
+  #when: interface_eth1_details['changed'] == true
+
+- name: Configure the physical interface eth2
+  cp_gaia_physical_interface:
+    name: eth2
+    ipv4_address: 10.1.3.81
+    ipv4_mask_length: 24
+    # monitor mode is not supported for clusters
+    monitor_mode: false
+    enabled: True
+    auto_negotiation: true #(or specify the speed and duplex in the module. See below)
+    comments: set via Ansible
+    ipv6_address:
+    ipv6_autoconfig: false
+    # options: 10M, 100M, 1000M, 10G
+    # speed: 1000M
+    # half, full
+    # duplex: full
+    mtu: 1500
+    tx_ringsize: 2048
+    rx_ringsize: 1024
+    # it's possible to change the MAC address if needed
+    #mac_addr: 00:50:56:87:3e:c5
+    ipv6_mask_length:
+  #register: interface_eth2_details
+#
+#- name: print new interface details if changed
+  #debug:
+    #msg: "{{ interface_eth2_details }}"
+  #when: interface_eth2_details['changed'] == true
+
+- name: Configure the physical interface eth3
+  cp_gaia_physical_interface:
+    name: eth3
+    ipv4_address: 10.1.4.81
+    ipv4_mask_length: 24
+    # monitor mode is not supported for clusters
+    monitor_mode: false
+    enabled: True
+    auto_negotiation: true #(or specify the speed and duplex in the module. See below)
+    comments: set via Ansible
+    ipv6_address:
+    ipv6_autoconfig: false
+    # options: 10M, 100M, 1000M, 10G
+    # speed: 1000M
+    # half, full
+    # duplex: full
+    mtu: 1500
+    tx_ringsize: 2048
+    rx_ringsize: 1024
+    # it's possible to change the MAC address if needed
+    #mac_addr: 00:50:56:87:3e:c5
+    ipv6_mask_length:
+  #register: interface_eth3_details
+#
+#- name: print new interface details if changed
+  #debug:
+    #msg: "{{ interface_eth3_details }}"
+  #when: interface_eth3_details['changed'] == true
+
+- name: Configure the physical interface eth4
+  cp_gaia_physical_interface:
+    name: eth4
+    ipv4_address: 203.0.113.81
+    ipv4_mask_length: 24
+    # monitor mode is not supported for clusters
+    monitor_mode: false
+    enabled: True
+    auto_negotiation: true #(or specify the speed and duplex in the module. See below)
+    comments: set via Ansible
+    ipv6_address:
+    ipv6_autoconfig: false
+    # options: 10M, 100M, 1000M, 10G
+    # speed: 1000M
+    # half, full
+    # duplex: full
+    mtu: 1500
+    tx_ringsize: 2048
+    rx_ringsize: 1024
+    # it's possible to change the MAC address if needed
+    #mac_addr: 00:50:56:87:3e:c5
+    ipv6_mask_length:
+  #register: interface_eth4_details
+#
+#- name: print new interface details if changed
+  #debug:
+    #msg: "{{ interface_eth4_details }}"
+  #when: interface_eth4_details['changed'] == true

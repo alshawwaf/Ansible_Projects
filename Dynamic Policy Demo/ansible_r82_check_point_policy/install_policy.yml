@@ -1,0 +1,7 @@
+- name: install-policy
+  cp_mgmt_install_policy:
+    access: True
+    policy_package: standard
+    targets:
+      - GW
+    threat_prevention: False

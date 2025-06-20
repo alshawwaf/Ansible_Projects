@@ -1,0 +1,77 @@
+- name: Play to provision SMS using the Ansible Gaia Collection
+  connection: httpapi
+  hosts: sms_gaia_api
+  gather_facts: false
+  collections:
+  - check_point.gaia
+
+  tasks:
+  - include_tasks: '{{item}}'
+    loop:
+    - provision_sms/hostname.yml
+    - provision_sms/expert_password.yml
+    - provision_sms/set_grub_password.yml
+    - provision_sms/initial_setup.yml 
+    - provision_sms/change_shell.yml
+
+- name: Play to provision GW using the Ansible Gaia Collection
+  connection: httpapi
+  hosts: gw_gaia_api
+  gather_facts: false
+  collections:
+  - check_point.gaia
+  tasks:
+  - include_tasks: '{{item}}'
+    loop:
+    - provision_gw/hostname.yml
+    - provision_gw/expert_password.yml
+    - provision_gw/set_grub_password.yml
+    - provision_gw/change_shell.yml
+    - provision_gw/default_route.yml
+    - provision_gw/dns_servers.yml
+    - provision_gw/initial_setup.yml 
+    - provision_gw/configure_interfaces.yml
+    - provision_gw/reboot.yml
+
+- name: Play to enable external web api access using Gaia Collection. default accept MGMT connections only 
+  connection: httpapi
+  hosts: sms_gaia_api
+  gather_facts: false
+  collections:
+  - check_point.gaia
+
+  tasks:
+  - include_tasks: '{{item}}'
+    loop:
+    - provision_sms/enable_web_api.yml
+
+- name: Play to create objects and security rules using the MGMT Collection
+  connection: httpapi
+  hosts: sms_web_api
+  gather_facts: false
+  collections:
+  - check_point.mgmt
+  vars:
+    #controls whether the policy exists or not. set to absent to remove the policy
+    state: present 
+    hostname: sms
+    ipaddr_v4: 10.1.1.80
+    masklen_v4: 24
+    default_gw_v4: 10.1.1.81  
+
+  tasks:
+  - include_tasks: '{{item}}'
+    loop:
+    # add the objects and policy rules.
+    - ansible_r82_check_point_policy/simple-gateway.yml
+    - ansible_r82_check_point_policy/host.yml
+    - ansible_r82_check_point_policy/network_feed.yml    
+    - ansible_r82_check_point_policy/network.yml
+    - ansible_r82_check_point_policy/service-tcp.yml
+    - ansible_r82_check_point_policy/service-group.yml
+    - ansible_r82_check_point_policy/access-layer.yml
+    - ansible_r82_check_point_policy/group.yml
+    - ansible_r82_check_point_policy/policy-rules.yml
+    - ansible_r82_check_point_policy/policy-rules-sections.yml
+    - ansible_r82_check_point_policy/publish.yml
+    - ansible_r82_check_point_policy/install_policy.yml

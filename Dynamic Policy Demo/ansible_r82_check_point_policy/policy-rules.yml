@@ -1,0 +1,441 @@
+
+- name: 'task for rule number: 1, Name: Sillent Drop'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: Sillent Drop
+    state: '{{state}}'
+    position: 1
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - bootp
+      - NBT
+      - nbsession
+      - nbname
+      - nbdatagram
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 2, Name: CP Updates'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: CP Updates
+    state: '{{state}}'
+    position: 2
+    source:
+      - GW
+      - SMS
+    source_negate: false
+    destination:
+      - Any
+      #- Akamai Services
+      #- Check Point Services
+    destination_negate: false
+    service:
+      - http
+      - https
+      - HTTP_and_HTTPS_proxy
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 3, Name: Management'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: Management
+    state: '{{state}}'
+    position: 3
+    source:
+      - jump_host
+      - win_client
+      - SMS
+      - GW
+    source_negate: false
+    destination:
+      - GW
+      - SMS
+    destination_negate: false
+    service:
+      - ssh_version_2
+      - https
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 4, Name: Stealth Rule'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: Stealth Rule
+    state: '{{state}}'
+    position: 4
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - GW
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 5, Name: DNS Layer'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: DNS Layer
+    state: '{{state}}'
+    position: 5
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - dns
+    service_negate: false
+    track:
+      type: None
+      per_session: false
+      per_connection: false
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: DNS_Layer
+- name: 'task for inline rule number: 1, Name: Internal DNS Server'
+  cp_mgmt_access_rule:
+    layer: DNS_Layer
+    name: Internal DNS Server
+    state: '{{state}}'
+    position: 1
+    source:
+      - net_203_0_113_0_24
+      - internal_nets
+    source_negate: false
+    destination:
+      - internal_DNS_feed_json
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for inline rule number: 2, Name: Public DNS Servers'
+  cp_mgmt_access_rule:
+    layer: DNS_Layer
+    name: Public DNS Servers
+    state: '{{state}}'
+    position: 2
+    source:
+      - win_client
+      - GW
+      - SMS
+      - win_server
+    source_negate: false
+    destination:
+      - public_DNS_feed_list
+      #- DNS_8_8_4_4
+      #- DNS_8_8_8_8
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for inline rule number: 3, Name: DNS log and drop'
+  cp_mgmt_access_rule:
+    layer: DNS_Layer
+    name: DNS log and drop
+    state: '{{state}}'
+    position: 3
+    source:
+      - Any
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Drop
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+- name: 'task for rule number: 6, Name: Outbound'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: Outbound
+    state: '{{state}}'
+    position: 6
+    source:
+      - net_10_1_1_0_24
+      - net_10_1_2_0_24
+      - net_10_1_3_0_24
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - http
+      - https
+      - HTTP_and_HTTPS_proxy
+      - icmp-requests
+      - quic
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 7, Name: Mail'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: Mail
+    state: '{{state}}'
+    position: 7
+    source:
+      - net_10_1_1_0_24
+      - net_10_1_2_0_24
+      - jump_host
+    source_negate: false
+    destination:
+      - Any
+    destination_negate: false
+    service:
+      - mail_services
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 8, Name: LDAP'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: LDAP
+    state: '{{state}}'
+    position: 8
+    source:
+      - win_client
+      - SMS
+    source_negate: false
+    destination:
+      - win_server
+    destination_negate: false
+    service:
+      - LDAP_all
+      - ntp
+      - tcp-high-ports
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Accept
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    action_settings:
+      enable_identity_captive_portal: false
+- name: 'task for rule number: 9, Name: DMZ'
+  cp_mgmt_access_rule:
+    layer: Network
+    name: DMZ
+    state: '{{state}}'
+    position: 9
+    source:
+      - attackers_feed_list
+      #- kali_linux
+    source_negate: false
+    destination:
+      - targets_feed_list
+      #- win_server
+    destination_negate: false
+    service: Any
+    service_negate: false
+    track:
+      type: Log
+      per_session: false
+      per_connection: true
+      accounting: false
+      enable_firewall_session: false
+      alert: none
+    action: Apply Layer
+    time:
+      - Any
+    comments: ''
+    custom_fields:
+      field_1: ''
+      field_2: ''
+      field_3: ''
+    enabled: true
+    install_on:
+      - Policy Targets
+    inline_layer: dynamic_layer

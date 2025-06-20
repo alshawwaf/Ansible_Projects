@@ -1,0 +1,16 @@
+- name: Task for internal_nets
+  cp_mgmt_group:
+    name: internal_nets
+    members:
+    - net_10_1_1_0_24
+    - net_10_1_2_0_24
+    - net_10_1_3_0_24
+    - net_10_1_4_0_24
+    comments: ''
+    color: brown
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

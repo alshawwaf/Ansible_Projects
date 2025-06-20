@@ -1,0 +1,16 @@
+- name: set admin default shell to bash
+  cp_gaia_user:
+    state: present
+    name: admin
+    #password: Cpwins!1
+    # shell options: 'scp-only', 'tcsh', 'csh', 'sh', 'no-login', 'bash', 'cli'
+    # bash is allowed if the assigned Role has expert mode access with RW
+    shell: bash
+
+  #register: modified_user_details
+#
+#- name: print modified user details
+  #debug:
+    #msg: "{{ modified_user_details }}"
+  #when: modified_user_details['changed'] == true
+

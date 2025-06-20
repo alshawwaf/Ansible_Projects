@@ -1,0 +1,322 @@
+{
+    "uid": "4e190b6c-b1ff-4c4a-85da-aa871aedb160",
+    "name": "GW",
+    "type": "simple-gateway",
+    "domain": {
+        "uid": "41e821a0-3720-11e3-aa6e-0800200c9fde",
+        "name": "SMC User",
+        "domain-type": "domain"
+    },
+    "platform": "open server",
+    "interfaces": [
+        {
+            "uid": "89c42399-1876-47ff-9867-e21f41313445",
+            "name": "eth4",
+            "network-interface-type": "ethernet",
+            "ipv4-address": "10.1.4.111",
+            "ipv4-network-mask": "255.255.255.0",
+            "ipv4-mask-length": 24,
+            "ipv6-address": "",
+            "comments": "",
+            "color": "black",
+            "icon": "NetworkObjects/network",
+            "topology": "automatic",
+            "topology-automatic-calculation": "internal",
+            "topology-settings": {
+                "ip-address-behind-this-interface": "network defined by the interface ip and net mask",
+                "interface-leads-to-dmz": false
+            },
+            "anti-spoofing": true,
+            "anti-spoofing-settings": {
+                "action": "prevent",
+                "exclude-packets": false,
+                "spoof-tracking": "log"
+            },
+            "security-zone": false
+        },
+        {
+            "uid": "4725644e-438c-4904-abb1-74d63e7eacff",
+            "name": "eth3",
+            "network-interface-type": "ethernet",
+            "ipv4-address": "10.1.3.111",
+            "ipv4-network-mask": "255.255.255.0",
+            "ipv4-mask-length": 24,
+            "ipv6-address": "",
+            "comments": "",
+            "color": "black",
+            "icon": "NetworkObjects/network",
+            "topology": "automatic",
+            "topology-automatic-calculation": "internal",
+            "topology-settings": {
+                "ip-address-behind-this-interface": "network defined by the interface ip and net mask",
+                "interface-leads-to-dmz": false
+            },
+            "anti-spoofing": true,
+            "anti-spoofing-settings": {
+                "action": "prevent",
+                "exclude-packets": false,
+                "spoof-tracking": "log"
+            },
+            "security-zone": false
+        },
+        {
+            "uid": "a71fdb1c-042f-4bf1-bcb2-b5d9383d3f50",
+            "name": "eth2",
+            "network-interface-type": "ethernet",
+            "ipv4-address": "10.1.2.111",
+            "ipv4-network-mask": "255.255.255.0",
+            "ipv4-mask-length": 24,
+            "ipv6-address": "",
+            "comments": "",
+            "color": "black",
+            "icon": "NetworkObjects/network",
+            "topology": "automatic",
+            "topology-automatic-calculation": "internal",
+            "topology-settings": {
+                "ip-address-behind-this-interface": "network defined by the interface ip and net mask",
+                "interface-leads-to-dmz": false
+            },
+            "anti-spoofing": true,
+            "anti-spoofing-settings": {
+                "action": "prevent",
+                "exclude-packets": false,
+                "spoof-tracking": "log"
+            },
+            "security-zone": false
+        },
+        {
+            "uid": "c3cff21e-5d50-4009-a9a8-431399b0caa0",
+            "name": "eth1",
+            "network-interface-type": "ethernet",
+            "ipv4-address": "10.1.1.111",
+            "ipv4-network-mask": "255.255.255.0",
+            "ipv4-mask-length": 24,
+            "ipv6-address": "",
+            "comments": "",
+            "color": "black",
+            "icon": "NetworkObjects/network",
+            "topology": "automatic",
+            "topology-automatic-calculation": "internal",
+            "topology-settings": {
+                "ip-address-behind-this-interface": "network defined by the interface ip and net mask",
+                "interface-leads-to-dmz": false
+            },
+            "anti-spoofing": true,
+            "anti-spoofing-settings": {
+                "action": "prevent",
+                "exclude-packets": false,
+                "spoof-tracking": "log"
+            },
+            "security-zone": false
+        },
+        {
+            "uid": "a93452a8-17f2-4eb5-bbdc-5afce542c703",
+            "name": "eth0",
+            "network-interface-type": "ethernet",
+            "ipv4-address": "203.0.113.111",
+            "ipv4-network-mask": "255.255.255.0",
+            "ipv4-mask-length": 24,
+            "ipv6-address": "",
+            "comments": "",
+            "color": "black",
+            "icon": "NetworkObjects/network",
+            "topology": "automatic",
+            "topology-automatic-calculation": "external",
+            "anti-spoofing": true,
+            "anti-spoofing-settings": {
+                "action": "prevent",
+                "exclude-packets": false,
+                "spoof-tracking": "log"
+            },
+            "security-zone": false
+        }
+    ],
+    "https-inspection": {
+        "outbound-certificate": {
+            "profile-value": "",
+            "override-profile": false
+        },
+        "bypass-on-client-failure": {
+            "profile-value": true,
+            "override-profile": false
+        },
+        "bypass-under-load": {
+            "value": false
+        },
+        "deployment-mode": "full",
+        "bypass-on-failure": {
+            "profile-value": true,
+            "override-profile": false
+        },
+        "site-categorization-allow-mode": {
+            "profile-value": "hold",
+            "override-profile": false
+        },
+        "deny-untrusted-server-cert": {
+            "profile-value": false,
+            "override-profile": false
+        },
+        "deny-revoked-server-cert": {
+            "profile-value": true,
+            "override-profile": false
+        },
+        "deny-expired-server-cert": {
+            "profile-value": false,
+            "override-profile": false
+        }
+    },
+    "ipv4-address": "10.1.1.111",
+    "dynamic-ip": false,
+    "version": "R82",
+    "os-name": "Gaia",
+    "hardware": "Open server",
+    "sic-name": "CN=GW,O=SMS..c67xy2",
+    "sic-state": "communicating",
+    "network-policy-management": false,
+    "log-server": false,
+    "firewall": true,
+    "firewall-settings": {
+        "auto-maximum-limit-for-concurrent-connections": true,
+        "maximum-limit-for-concurrent-connections": 25000,
+        "auto-calculate-connections-hash-table-size-and-memory-pool": true,
+        "connections-hash-size": 131072,
+        "memory-pool-size": 6,
+        "maximum-memory-pool-size": 30
+    },
+    "vpn": false,
+    "externally-managed": false,
+    "policy-server": false,
+    "mobile-access": false,
+    "legacy-url-filtering": false,
+    "monitoring": false,
+    "anti-spam-and-email-security": false,
+    "application-control": false,
+    "url-filtering": false,
+    "threat-prevention-mode": "custom",
+    "ips": true,
+    "threat-emulation": false,
+    "threat-extraction": false,
+    "data-loss-prevention": false,
+    "qos": false,
+    "anti-bot": false,
+    "anti-virus": false,
+    "content-awareness": false,
+    "zero-phishing": false,
+    "save-logs-locally": false,
+    "send-alerts-to-server": [
+        "SMS"
+    ],
+    "send-logs-to-server": [
+        "SMS"
+    ],
+    "send-logs-to-backup-server": [],
+    "logs-settings": {
+        "rotate-log-by-file-size": false,
+        "rotate-log-file-size-threshold": 1000,
+        "rotate-log-on-schedule": false,
+        "alert-when-free-disk-space-below-metrics": "mbytes",
+        "alert-when-free-disk-space-below": true,
+        "alert-when-free-disk-space-below-threshold": 20,
+        "alert-when-free-disk-space-below-type": "popup alert",
+        "delete-when-free-disk-space-below-metrics": "mbytes",
+        "delete-when-free-disk-space-below": true,
+        "delete-when-free-disk-space-below-threshold": 5000,
+        "before-delete-keep-logs-from-the-last-days": false,
+        "before-delete-keep-logs-from-the-last-days-threshold": 3664,
+        "before-delete-run-script": false,
+        "before-delete-run-script-command": "",
+        "stop-logging-when-free-disk-space-below-metrics": "mbytes",
+        "stop-logging-when-free-disk-space-below": false,
+        "stop-logging-when-free-disk-space-below-threshold": 100,
+        "reject-connections-when-free-disk-space-below-threshold": false,
+        "reserve-for-packet-capture-metrics": "mbytes",
+        "reserve-for-packet-capture-threshold": 500,
+        "delete-index-files-when-index-size-above-metrics": "mbytes",
+        "delete-index-files-when-index-size-above": false,
+        "delete-index-files-when-index-size-above-threshold": 100000,
+        "delete-index-files-older-than-days": false,
+        "delete-index-files-older-than-days-threshold": 14,
+        "forward-logs-to-log-server": false,
+        "perform-log-rotate-before-log-forwarding": false,
+        "update-account-log-every": 3600,
+        "detect-new-citrix-ica-application-names": false,
+        "turn-on-qos-logging": true,
+        "distribute-logs-between-all-active-servers": false
+    },
+    "identity-awareness": false,
+    "platform-portal-settings": {
+        "enabled": true,
+        "portal-web-settings": {
+            "main-url": "https://10.1.1.111/",
+            "ip-address": "10.1.1.111",
+            "aliases": []
+        },
+        "accessibility": {
+            "allow-access-from": "RULE_BASE"
+        }
+    },
+    "proxy-settings": {
+        "use-custom-proxy": false
+    },
+    "nat-hide-internal-interfaces": false,
+    "nat-settings": {
+        "auto-rule": false
+    },
+    "fetch-policy": [
+        "SMS"
+    ],
+    "advanced-settings": {
+        "sam": {
+            "forward-to-other-sam-servers": false,
+            "use-early-versions": {
+                "enabled": false
+            },
+            "purge-sam-file": {
+                "enabled": false,
+                "purge-when-size-reaches-to": 100
+            }
+        },
+        "connection-persistence": "rematch-connections"
+    },
+    "hit-count": true,
+    "enable-https-inspection": false,
+    "application-control-and-url-filtering-settings": {
+        "global-settings-mode": "use_global_settings"
+    },
+    "zero-phishing-settings": {
+        "gateway-fqdn-mode": "automatic"
+    },
+    "ips-update-policy": "via management",
+    "auto-topology-use-custom-recalculation-time": false,
+    "auto-topology-custom-recalculation-time": 10,
+    "rtm-traffic-report": false,
+    "rtm-counters-report": true,
+    "rtm-traffic-report-per-connection": false,
+    "communication-with-servers-behind-nat": {
+        "override-profile": false
+    },
+    "comments": "",
+    "color": "cyan",
+    "icon": "NetworkObjects/gateway",
+    "tags": [],
+    "meta-info": {
+        "lock": "unlocked",
+        "validation-state": "ok",
+        "last-modify-time": {
+            "posix": 1743109402105,
+            "iso-8601": "2025-03-27T17:03-0400"
+        },
+        "last-modifier": "admin",
+        "creation-time": {
+            "posix": 1729800291807,
+            "iso-8601": "2024-10-24T16:04-0400"
+        },
+        "creator": "admin"
+    },
+    "read-only": false,
+    "available-actions": {
+        "edit": "true",
+        "delete": "true",
+        "clone": "not_supported"
+    }
+}

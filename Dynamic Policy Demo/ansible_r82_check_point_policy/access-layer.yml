@@ -1,0 +1,37 @@
+- name: Task for DNS_Layer
+  cp_mgmt_access_layer:
+    name: DNS_Layer
+    shared: false
+    #dynamic_layer: false
+    applications_and_url_filtering: false
+    content_awareness: false
+    mobile_access: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+
+- name: Task for dynamic_layer
+  cp_mgmt_access_layer:
+    name: dynamic_layer
+    shared: true
+    dynamic_layer: True
+    applications_and_url_filtering: false
+    content_awareness: false
+    mobile_access: false
+    firewall: true
+    implicit_cleanup_action: drop
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

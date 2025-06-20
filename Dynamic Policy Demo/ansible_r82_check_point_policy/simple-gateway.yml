@@ -1,0 +1,68 @@
+- name: Task for GW (Simple GW)
+  cp_mgmt_simple_gateway:
+    name: GW
+    one_time_password: vpn123
+    ipv4_address: 10.1.1.81
+    application_control: True
+    url_filtering: True
+    state: '{{state}}'
+    ignore_warnings: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+    interfaces:
+      - name: "eth0"
+        ipv4_address: "10.1.1.81"
+        ipv4_network_mask: "255.255.255.0"
+        topology: "internal"
+        topology_settings:
+          ip_address_behind_this_interface: "network defined by the interface ip and net mask"
+          interface_leads_to_dmz: false
+        anti_spoofing: true
+        anti_spoofing_settings:
+            action: "prevent"
+        security_zone: false
+
+      - name: "eth1"
+        ipv4_address: "10.1.2.81"
+        ipv4_network_mask: "255.255.255.0"
+        topology: "internal"
+        topology_settings:
+          ip_address_behind_this_interface: "network defined by the interface ip and net mask"
+          interface_leads_to_dmz: false
+        anti_spoofing: true
+        anti_spoofing_settings:
+            action: "prevent"
+        security_zone: false
+
+      - name: "eth2"
+        ipv4_address: "10.1.3.111"
+        ipv4_network_mask: "255.255.255.0"
+        topology: "internal"
+        topology_settings:
+          ip_address_behind_this_interface: "network defined by the interface ip and net mask"
+          interface_leads_to_dmz: false
+        anti_spoofing: true
+        anti_spoofing_settings:
+            action: "prevent"
+        security_zone: false  
+
+      - name: "eth3"
+        ipv4_address: "10.1.4.111"
+        ipv4_network_mask: "255.255.255.0"
+        topology: "internal"
+        topology_settings:
+          ip_address_behind_this_interface: "network defined by the interface ip and net mask"
+          interface_leads_to_dmz: false
+        anti_spoofing: true
+        anti_spoofing_settings:
+            action: "prevent"
+        security_zone: false        
+
+      - name: "eth4"
+        ipv4_address: "203.0.113.81"
+        ipv4_network_mask: "255.255.255.0"
+        topology: "external"
+        anti_spoofing: true
+        anti_spoofing_settings:
+            action: "prevent"
+        security_zone: false        

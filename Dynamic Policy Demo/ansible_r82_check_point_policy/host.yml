@@ -1,0 +1,112 @@
+- name: Task for DNS_8_8_4_4
+  cp_mgmt_host:
+    name: DNS_8_8_4_4
+    ipv4_address: 8.8.4.4
+    interfaces: []
+    nat_settings:
+      auto_rule: false
+    comments: ''
+    color: sea green
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for DNS_8_8_8_8
+  cp_mgmt_host:
+    name: DNS_8_8_8_8
+    ipv4_address: 8.8.8.8
+    interfaces: []
+    nat_settings:
+      auto_rule: false
+    comments: ''
+    color: sea green
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for jump_host
+  cp_mgmt_host:
+    name: jump_host
+    ipv4_address: 10.1.1.200
+    interfaces:
+    - name: eth1
+      subnet4: 10.1.2.200
+      mask_length4: 24
+      color: black
+    - name: eth2
+      subnet4: 10.1.3.200
+      mask_length4: 24
+      color: black
+    - name: eth3
+      subnet4: 10.1.4.200
+      mask_length4: 24
+      color: black
+    - name: eth4
+      subnet4: 203.0.113.201
+      mask_length4: 24
+      color: black
+    nat_settings:
+      auto_rule: false
+    comments: ''
+    color: black
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for kali_linux
+  cp_mgmt_host:
+    name: kali_linux
+    ipv4_address: 203.0.113.5
+    interfaces: []
+    nat_settings:
+      auto_rule: false
+    comments: ''
+    color: sea green
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for win_client
+  cp_mgmt_host:
+    name: win_client
+    ipv4_address: 10.1.1.222
+    interfaces: []
+    nat_settings:
+      auto_rule: true
+      ipv4_address: 203.0.113.222
+      install_on: GW
+      method: static
+    comments: ''
+    color: red
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for win_server
+  cp_mgmt_host:
+    name: win_server
+    ipv4_address: 10.1.2.250
+    interfaces: []
+    nat_settings:
+      auto_rule: true
+      ipv4_address: 203.0.113.250
+      install_on: GW
+      method: static
+    comments: ''
+    color: crete blue
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

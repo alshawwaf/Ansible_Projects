@@ -1,0 +1,75 @@
+{
+    "comments": "Pentest Dynamic Layer",
+    "tags": [
+        "PENTEST",
+        "urgent"
+    ],
+    "custom-fields": {
+        "field-1": "field",
+        "field-2": "field",
+        "field-3": "field"
+    },
+    "dry-run": false,
+    "referenced-objects": {
+        "services-tcp": [
+            "http",
+            "https"
+        ],
+        "services-icmp": [
+            "echo-request",
+            "echo-reply"
+        ],
+        "access-layers": [
+            "dynamic_layer"
+        ]
+    },
+    "objects": {
+        "hosts": [
+            {
+                "name": "attacker",
+                "ip-address": "203.0.113.5"
+            },
+            {
+                "name": "target_host",
+                "ip-address": "203.0.113.250"
+            }
+        ]
+    },
+    "access-layers-content": [
+        {
+            "name": "dynamic_layer",
+            "operation": "replace",
+            "rulebase": [
+                {
+                    "name": "pentest rule",
+                    "action": "Accept",
+                    "source": [
+                        "attacker"
+                    ],
+                    "destination": [
+                        "target_host"
+                    ],
+                    "service": [
+                        "http",
+                        "https",
+                        "echo-request",
+                        "echo-reply"
+                    ],
+                    "track": {
+                        "type": "Log"
+                    }
+                },
+                {
+                    "name": "dynamic_cleanup_rule",
+                    "action": "Drop",
+                    "source": "any",
+                    "destination": "any",
+                    "track": {
+                        "type": "Log"
+                    },
+                    "service": "any",
+                }
+            ]
+        }
+    ]
+}

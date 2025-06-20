@@ -1,0 +1,22 @@
+- name: Enable Web API external access
+  cp_gaia_run_script:
+    script: "mgmt_cli -r true -d 'System Data' set api-settings accepted-api-calls-from 'All IP addresses'"  
+  #register: api_reconfigure
+#
+#- name: show api_reconfigure state  
+  #debug:
+    #msg: '{{ api_reconfigure }}'
+
+
+- name: show API Status
+  cp_gaia_run_script:
+    script: "api status"  
+#  register: api_status
+
+#- name: show API status
+  #debug:
+    #msg: '{{ api_status }}'
+
+- name: Enable all physical interfaces
+  cp_gaia_run_script:
+    script: "clish -c 'set interface eth1 state on'; clish -c 'set interface eth2 state on'; clish -c 'set interface eth3 state on'; clish -c 'set interface eth4 state on'"  

@@ -1,0 +1,39 @@
+- name: Task for LDAP_all
+  cp_mgmt_service_group:
+    name: LDAP_all
+    members:
+    - ldap
+    - ldap-ssl
+    - ldap_udp
+    - microsoft-ds
+    - microsoft-ds-udp
+    - Kerberos_v5_TCP
+    - Kerberos_v5_UDP
+    - LDAP_TCP_135
+    comments: ''
+    color: crete blue
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'
+- name: Task for mail_services
+  cp_mgmt_service_group:
+    name: mail_services
+    members:
+    - pop-2
+    - pop-3
+    - POP3S
+    - imap
+    - IMAP-SSL
+    - smtp
+    - SMTPS
+    comments: ''
+    color: magenta
+    tags: []
+    state: '{{state}}'
+    ignore_warnings: false
+    ignore_errors: false
+    wait_for_task: true
+    wait_for_task_timeout: '30'

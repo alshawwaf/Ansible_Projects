@@ -1,0 +1,19 @@
+- name: Set new default route
+  cp_gaia_static_route:
+    state: present
+    address: 0.0.0.0
+    mask_length: 0
+    comment: "added via Ansible"
+    # default rank is 60
+    rank: 60
+    ping: false
+    scope_local: false
+    # Choices: 'blackhole', 'gateway', 'reject'. Gateway is called "Normal" in the portal
+    type: gateway
+    next_hop: [{ "gateway": "203.0.113.1", "priority": 1 }]
+  #register: default_route
+#
+#- name: print new static route details
+  #debug:
+    #msg: "{{ default_route }}"
+  #when: default_route['changed'] == true

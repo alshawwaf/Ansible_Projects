@@ -1,0 +1,17 @@
+- name: Run First time Wizard (Initial Setup)
+  cp_gaia_initial_setup:
+    wait_for_task: True
+    #password: Cpwins!1
+    security_management: {
+        multi_domain: False,
+        # Type choices: 'primary', 'secondary', 'log-server', default='primary'
+        type: primary
+      }
+    #It fails if this is not provided. Not supported in module but supported in the API
+    grub_password: Cpwins!1
+  #ignore_errors: True   
+  #register: FTW_results
+
+#- name: print FTW response
+  #debug:
+    #msg: "{{ FTW_results }}"

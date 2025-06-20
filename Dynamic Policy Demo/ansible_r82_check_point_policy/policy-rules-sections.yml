@@ -1,0 +1,30 @@
+- name: set-access-section on top of Management
+  cp_mgmt_access_section:
+    layer: Network
+    name: Management
+    position: 1
+    state: '{{state}}'
+- name: set-access-section on top of DNS
+  cp_mgmt_access_section:
+    layer: Network
+    name: DNS
+    position: 5
+    state: '{{state}}'
+- name: set-access-section on top of Network Traffic
+  cp_mgmt_access_section:
+    layer: Network
+    name: Network Traffic
+    position: 6
+    state: '{{state}}'
+- name: set-access-section on top of DMZ
+  cp_mgmt_access_section:
+    layer: Network
+    name: DMZ
+    position: 9
+    state: '{{state}}'
+- name: set-access-section on top of Clean up rule
+  cp_mgmt_access_section:
+    layer: Network
+    name: Clean up rule
+    position: 10
+    state: '{{state}}'

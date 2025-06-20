@@ -1,0 +1,3 @@
+- name: Changing a hostname
+  cp_gaia_hostname:
+    name: GW

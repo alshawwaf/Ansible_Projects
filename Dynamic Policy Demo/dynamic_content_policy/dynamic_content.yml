@@ -1,0 +1,22 @@
+- name: Add a file for dynamic content policy
+  cp_gaia_put_file:
+    file_name: "policy_dynamic_content.json"
+    text_content: "{\r\n  \"comments\": \"Pentest Dynamic Layer\",\r\n  \"tags\": [\r\n    \"PENTEST\",\r\n    \"urgent\"\r\n  ],\r\n  \"custom-fields\": {\r\n    \"field-1\": \"field\",\r\n    \"field-2\": \"field\",\r\n    \"field-3\": \"field\"\r\n  },\r\n  \"dry-run\": false,\r\n  \"referenced-objects\": {\r\n    \"services-tcp\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"services-icmp\": [\r\n      \"echo-request\",\r\n      \"echo-reply\"\r\n    ],\r\n    \"access-layers\": [\r\n      \"dynamic_layer\"\r\n    ]\r\n  },\r\n\r\n  \"objects\": {\r\n    \"hosts\": [\r\n      {\r\n        \"name\": \"attacker\",\r\n        \"ip-address\": \"203.0.113.5\"\r\n      },\r\n      {\r\n        \"name\": \"target_host\",\r\n        \"ip-address\": \"203.0.113.250\"\r\n      }\r\n    ]\r\n  },\r\n  \"access-layers-content\": [\r\n    {\r\n      \"name\": \"dynamic_layer\",\r\n      \"operation\": \"replace\",\r\n      \"rulebase\": [\r\n        {\r\n          \"name\": \"pentest rule\",\r\n          \"action\": \"Accept\",\r\n          \"source\": [\r\n            \"attacker\"\r\n          ],\r\n          \"destination\": [\r\n            \"target_host\"\r\n          ],\r\n          \"service\": [\r\n            \"http\",\r\n            \"https\",\r\n            \"echo-request\",\r\n            \"echo-reply\"\r\n            ],\r\n          \"track\": {\r\n            \"type\": \"Log\"\r\n          }\r\n        },\r\n        {\r\n          \"name\": \"dynamic_cleanup_rule\",\r\n          \"action\": \"Drop\",\r\n          \"source\": \"any\",\r\n          \"destination\": \"any\",\r\n          \"track\": {\r\n            \"type\": \"Log\"\r\n          },\r\n          \"service\": \"any\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}\r\n"
+    
+    override: true
+
+
+- name: Configure Dynamic Content security policy
+  cp_gaia_dynamic_content:
+    policy_path: "/home/admin/policy_dynamic_content.json"
+    dry_run: False
+    tags: ["Via Ansible"]
+    comments: "Dynamic Layer Policy Demo"
+    wait_for_task: true
+
+  register: apply_dynamic_content
+
+- name: print modified user details
+  debug:
+    msg: "{{ apply_dynamic_content }}"
+  #when: apply_dynamic_content['changed'] == true    

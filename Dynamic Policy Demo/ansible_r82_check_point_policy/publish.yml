@@ -1,0 +1,3 @@
+- name: publish
+  cp_mgmt_publish:
+    wait_for_task: True
