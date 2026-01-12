@@ -12,7 +12,7 @@ class API_client:
     domain: str
     policy_layer: str
 
-    def __init__(self, api_server: str, user: str, password: str, api_key=None, domain=None ) -> None:
+    def __init__(self, api_server: str, user: str, password: str, domain=None, api_key=None ) -> None:
         self.user = user
         self.password = password
         self.api_key = api_key
