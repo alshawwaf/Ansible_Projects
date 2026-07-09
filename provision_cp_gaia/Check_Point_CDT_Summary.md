@@ -1,6 +1,6 @@
-# Check Point Central Deployment Tool (CDT) — Customer Discussion Summary
+# Check Point Central Deployment Tool (CDT) — Discussion Summary
 
-**Purpose:** Briefing document for discussing CDT and automation of Check Point upgrade/deployment processes with a customer.
+**Purpose:** Briefing document for discussing CDT and automation of Check Point upgrade/deployment processes.
 **Prepared:** 2026-07-08
 **Current CDT version:** v2.2 (released 31 Jul 2025)
 
@@ -69,7 +69,7 @@ CDT is the primary Check Point-supported way to **automate large-scale gateway u
 | **Retry mode** | Re-run only failed installations. Can run multiple instances. | Recover quickly from partial failures. |
 | **RMA mode** | Automated backup/restore for appliance replacement. | Standardized RMA process. |
 
-**Talking point:** Preparations mode is the single biggest lever for shrinking a customer's maintenance window — heavy file transfer happens ahead of time; only the install/reboot happens during the window.
+**Talking point:** Preparations mode is the single biggest lever for shrinking a 's maintenance window — heavy file transfer happens ahead of time; only the install/reboot happens during the window.
 
 ---
 
@@ -130,7 +130,7 @@ Enables CDT via **Gaia Dynamic CLI** with **Role-Based Access Control** — so y
 
 ---
 
-## 7. Key Limitations (raise these proactively with the customer)
+## 7. Key Limitations
 
 **Not supported on:** Standalone servers, Management in Backup state (HA), dedicated SmartEvent/Log servers, Multi-Domain Log Server, Full HA cluster members, Scalable Chassis 40000/60000, Spark firewalls, SmartProvisioning-managed ROBO gateways, IPv6-only gateways, globally-used gateways on MDS, Maestro multi-site Active-Active, VSNext.
 
@@ -218,7 +218,7 @@ Check Point offers an **Ansible module** (`check_point.mgmt.cp_mgmt_install_soft
 
 ## 9. Detailed Automation Use Cases & Worked Examples
 
-This section contains ready-to-adapt, end-to-end examples. Use these to show the customer exactly *what automating with CDT looks like in practice*.
+This section contains ready-to-adapt, end-to-end examples. Use these to show the exactly *what automating with CDT looks like in practice*.
 
 ### 9.0 The three building blocks of every CDT run
 
@@ -771,12 +771,3 @@ Ansible equivalent: `check_point.mgmt.cp_mgmt_uninstall_software_package` (param
 - **Ansible collection repo** — https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection
 
 ---
-
-## 13. Suggested Customer Talking Points
-
-1. **"How many gateways/clusters, and what versions?"** — Confirms CDT applies (Management must be at target version first; watch the R80.10–R80.30 exclusion).
-2. **"How large is your maintenance window?"** — Position Preparations / Extended Preparations to compress it.
-3. **"Do you already use Ansible or IaC?"** — If yes, layer the Ansible module; if no, native CDT CLI/Clish is the fastest path.
-4. **"Who runs upgrades, and do they have Expert access?"** — Sell Clish + RBAC for least-privilege operations.
-5. **"Any VSX / Maestro / CloudGuard in scope?"** — All supported, but each has specific prerequisites/limitations to plan for.
-6. **"Post-upgrade policy needs?"** — Set expectation that Threat Prevention/QoS/Desktop policies may need manual install.
